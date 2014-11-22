@@ -1,4 +1,7 @@
-﻿using System.Web;
+﻿using LiveHackDb;
+using LiveHackDb.Migrations;
+using System.Data.Entity;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -15,6 +18,8 @@ namespace LiveHack_Web
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<LiveHackDbContext, Configuration>());
 		}
 	}
 }
