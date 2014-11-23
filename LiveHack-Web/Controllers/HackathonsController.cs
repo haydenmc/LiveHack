@@ -21,9 +21,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Hackathons
 		[Route("")]
-        public IQueryable<HackathonBindingModel> GetHackathons()
+        public IQueryable<HackathonViewModel> GetHackathons()
         {
-            return db.Hackathons.Select(x => new HackathonBindingModel(x));
+            return db.Hackathons.Select(x => new HackathonViewModel(x));
         }
 
         // GET: api/Hackathons/5
@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Hackathon))]
         public IHttpActionResult GetHackathon(Guid id)
         {
-            HackathonBindingModel hackathon = new HackathonBindingModel(db.Hackathons.Find(id));
+            HackathonViewModel hackathon = new HackathonViewModel(db.Hackathons.Find(id));
             if (hackathon == null)
             {
                 return NotFound();
@@ -49,8 +49,13 @@ namespace LiveHack_Web.Controllers
 
 		//POST: api/Hackathons
 		[Route("")]
-		public IHttpActionResult Post()
+		public IHttpActionResult Post(HackathonViewModel hackathon)
 		{
+			var model = new Hackathon() 
+			{
+ 				HackathonId = Guid.NewGuid(),
+				
+			};
 			return Ok();
 		}
 

@@ -6,9 +6,9 @@ using System.Web;
 
 namespace LiveHack_Web.Models.Viewmodels
 {
-    public class UserViewModel
+    public class UserBindingModel
     {
-        public UserViewModel(User user)
+        public UserBindingModel(User user)
         {
             this.Id				= user.Id;
             this.Email			= user.Email;

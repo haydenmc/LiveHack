@@ -21,9 +21,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Technologies
         [Route("")]
-        public IQueryable<TechnologyViewModel> GetTechnologies()
+        public IQueryable<TechnologyBindingModel> GetTechnologies()
         {
-            return db.Technologies.Select(x => new TechnologyViewModel(x));
+            return db.Technologies.Select(x => new TechnologyBindingModel(x));
         }
 
         // GET: api/Technologies/5
@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Technology))]
         public IHttpActionResult GetTechnology(Guid id)
         {
-            TechnologyViewModel technology = new TechnologyViewModel(db.Technologies.Find(id));
+            TechnologyBindingModel technology = new TechnologyBindingModel(db.Technologies.Find(id));
             if (technology == null)
             {
                 return NotFound();

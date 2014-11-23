@@ -6,9 +6,9 @@ using LiveHackDb.Models;
 
 namespace LiveHack_Web.Models.Viewmodels
 {
-    public class InstitutionViewModel
+    public class InstitutionBindingModel
     {
-        public InstitutionViewModel(Institution ins)
+        public InstitutionBindingModel(Institution ins)
 		{
             this.InstitutionId  = ins.InstitutionId;
             this.Name           = ins.Name;

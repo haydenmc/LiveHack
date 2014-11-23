@@ -10,8 +10,8 @@ namespace LiveHack_Web.Models.Viewmodels
 	{
 		public InstitutionGroupViewModel(InstitutionGroup group) : base(group)
 		{
-			this.Institution = new InstitutionViewModel(group.Institution);
+			this.Institution = new InstitutionBindingModel(group.Institution);
 		}
-		public InstitutionViewModel Institution { get; set; }
+		public InstitutionBindingModel Institution { get; set; }
 	}
 }

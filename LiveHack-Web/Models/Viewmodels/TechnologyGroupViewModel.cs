@@ -10,8 +10,8 @@ namespace LiveHack_Web.Models.Viewmodels
 	{
 		public TechnologyGroupViewModel(TechnologyGroup group) : base(group)
 		{
-			this.Technology = new TechnologyViewModel(group.Technology);
+			this.Technology = new TechnologyBindingModel(group.Technology);
 		}
-		public TechnologyViewModel Technology { get; set; }
+		public TechnologyBindingModel Technology { get; set; }
 	}
 }
