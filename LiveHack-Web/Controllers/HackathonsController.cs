@@ -54,9 +54,27 @@ namespace LiveHack_Web.Controllers
 			var model = new Hackathon() 
 			{
  				HackathonId = Guid.NewGuid(),
-				Name = hackathon.Name
-				
+				Name = hackathon.Name,
+				ShortName = hackathon.ShortName,
+				Description = hackathon.Description,
+				StartDateTime = hackathon.StartDateTime,
+				EndDateTime = hackathon.EndDateTime,
+				Institution = db.Institutions.Find(hackathon.InstitutionId),
+				Users = new List<User>(),
+				Groups = new List<HackathonGroup>()
 			};
+
+			db.Hackathons.Add(model);
+
+			try
+			{
+				db.SaveChanges();
+			}
+			catch(DbUpdateException)
+			{
+				throw;
+			}
+
 			return Ok();
 		}
 
