@@ -16,9 +16,9 @@ namespace LiveHack_Web.Models.Viewmodels
 			this.Description	= hack.Description;
 			this.StartDateTime	= hack.StartDateTime;
 			this.EndDateTime	= hack.EndDateTime;
-			//this.Institution	= new InstitutionViewModel(hack.Institution);
-			//this.Users		= hack.Users.Select(x => new UserViewModel(x));
-			//this.Groups		= hack.Groups.Select(x => new GroupViewModel(x));
+			this.Institution	= new InstitutionViewModel(hack.Institution);
+			this.Users			= hack.Users.Select(x => new UserViewModel(x)).ToList();
+			this.Groups			= hack.Groups.Select(x => new HackathonGroupViewModel(x)).ToList();
 		}
 
 		public Guid HackathonId { get; set; }
@@ -27,8 +27,8 @@ namespace LiveHack_Web.Models.Viewmodels
 		public String Description { get; set; }
 		public DateTimeOffset StartDateTime { get; set; }
 		public DateTimeOffset EndDateTime { get; set; }
-		//public InstitutionViewModel Institution { get; set; }
-		//public ICollection<UserViewModel> Users { get; set; }
-		//public ICollection<HackathonGroupViewModel> Groups { get; set; }
+		public InstitutionViewModel Institution { get; set; }
+		public ICollection<UserViewModel> Users { get; set; }
+		public ICollection<HackathonGroupViewModel> Groups { get; set; }
 	}
 }

@@ -8,9 +8,9 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class HackathonGroupViewModel : GroupViewModel
 	{
-		public HackathonGroupViewModel(HackathonGroup group)
+		public HackathonGroupViewModel(HackathonGroup group) : base(group)
 		{
-			
+
 		}
 
 		public Guid GroupId { get; set }
