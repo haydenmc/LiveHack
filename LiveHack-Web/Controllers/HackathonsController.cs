@@ -49,11 +49,12 @@ namespace LiveHack_Web.Controllers
 
 		//POST: api/Hackathons
 		[Route("")]
-		public IHttpActionResult Post(HackathonViewModel hackathon)
+		public IHttpActionResult Post(HackathonBindingModel hackathon)
 		{
 			var model = new Hackathon() 
 			{
  				HackathonId = Guid.NewGuid(),
+				Name = hackathon.Name
 				
 			};
 			return Ok();
