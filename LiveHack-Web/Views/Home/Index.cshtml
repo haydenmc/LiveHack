@@ -9,25 +9,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Hackathon</title>
+	<link href="~/Content/Site.css" rel="stylesheet" />
 	<script src="~/Content/components/webcomponentsjs/webcomponents.js"></script>
-	<link rel="import" href="~/Content/elements/livehack-datasource/livehack-datasource.html">
-	<link rel="import" href="~/Content/elements/livehack-navbar/livehack-navbar.html">
+	<link rel="import" href="~/Content/elements/livehack-datasource/livehack-datasource.html" />
+	<link rel="import" href="~/Content/elements/livehack-navbar/livehack-navbar.html" />
+	<link rel="import" href="~/Content/components/core-animated-pages/core-animated-pages.html" />
+	<link rel="import" href="~/Content/components/core-selector/core-selector.html" />
 </head>
 <body fullbleed horizontal layout unresolved>
 	<template is="auto-binding">
 		<livehack-datasource mygroups="{{ mygroups }}"></livehack-datasource>
 
 		<livehack-navbar width="320">
-			<h1>THIS IS A TEST!</h1>
-			<div vertical layout>
+			<h2 style="text-align:center;">LIVEHACK</h2>
+			<core-selector class="list" selected="0" vertical layout>
 				<template repeat="{{ mygroups }}">
-					<p>Ding! {{ name }}</p>
+					<div>{{ name }}</div>
 				</template>
-			</div>
+			</core-selector>
 		</livehack-navbar>
-		<div flex>
-			<h1>This is where details go.</h1>
-		</div>
+		<core-animated-pages transitions="cross-fade-all" flex>
+			<section>
+				<div layout fit style="background:red;">
+					<div>1</div>
+				</div>
+			</section>
+			<section>
+				<div layout vertical center center-justified style="background:blue;">
+					<div>2</div>
+				</div>
+			</section>
+			<section>
+				<div layout vertical center center-justified style="background:purple;">
+					<div>3</div>
+				</div>
+			</section>
+			<section>
+				<div layout vertical center center-justified style="background:orange;">
+					<div>4</div>
+				</div>
+			</section>
+			<section>
+				<div layout vertical center center-justified style="background:green;">
+					<div>5</div>
+				</div>
+			</section>
+		</core-animated-pages>
 	</template>
 </body>
 </html>
