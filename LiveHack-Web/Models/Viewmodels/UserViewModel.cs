@@ -8,15 +8,16 @@ namespace LiveHack_Web.Models.Viewmodels
 {
     public class UserViewModel
     {
-        public UserViewModel(User user)
+        public static UserViewModel CreateUserViewModel(User user)
         {
-            this.Id				= user.Id;
-            this.Email			= user.Email;
-			this.HackathonIds	= user.Hackathons.Select(x => x.HackathonId).ToList();
-			this.InstitutionId	= user.Institution.InstitutionId;
-            //this.Hackathons   = user.Hackathons.Select(x => new HackathonViewModel(x)).ToList();
-            //this.Institution	= new InstitutionViewModel(user.Institution);
-
+            UserViewModel model = new UserViewModel();
+            model.Id				= user.Id;
+            model.Email			= user.Email;
+			model.HackathonIds	= user.Hackathons.Select(x => x.HackathonId).ToList();
+			model.InstitutionId	= user.Institution.InstitutionId;
+            //model.Hackathons   = user.Hackathons.Select(x => new HackathonViewModel(x)).ToList();
+            //model.Institution	= new InstitutionViewModel(user.Institution);
+            return model;
         }
 		public ICollection<Guid> HackathonIds { get; set; }
 		public Guid InstitutionId { get; set; }

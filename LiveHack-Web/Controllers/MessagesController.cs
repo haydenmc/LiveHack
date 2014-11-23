@@ -19,7 +19,7 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Messages
-        public IQueryable<Message> GetMessages()
+        public IEnumerable<Message> GetMessages()
         {
             return db.Messages;
         }

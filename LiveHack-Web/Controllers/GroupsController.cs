@@ -21,9 +21,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Groups
         [Route("")]
-        public IQueryable<GroupViewModel> GetGroups()
+        public IEnumerable<GroupViewModel> GetGroups()
         {
-            return db.Groups.Select(x => new GroupViewModel(x));
+            return db.Groups.ToList().Select(x => GroupViewModel.CreateGroupViewModel(x));
         }
 
         // GET: api/Groups/5
@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Group))]
         public IHttpActionResult GetGroup(Guid id)
         {
-            GroupViewModel group = new GroupViewModel(db.Groups.Find(id));
+            GroupViewModel group =  GroupViewModel.CreateGroupViewModel(db.Groups.Find(id));
             if (group == null)
             {
                 return NotFound();

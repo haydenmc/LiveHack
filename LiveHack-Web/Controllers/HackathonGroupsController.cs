@@ -20,9 +20,9 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/HackathonGroups
-        public IQueryable<HackathonGroupViewModel> GetGroups()
+        public IEnumerable<HackathonGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<HackathonGroup>().Select(x => new HackathonGroupViewModel(x));
+            return db.Groups.OfType<HackathonGroup>().Select(x => HackathonGroupViewModel.CreateHackathonGroupViewModel(x));
         }
 
         // GET: api/HackathonGroups/5
@@ -30,7 +30,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(HackathonGroup))]
         public IHttpActionResult GetHackathonGroup(Guid id)
         {
-            HackathonGroupViewModel htest = new HackathonGroupViewModel(db.Groups.OfType<HackathonGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            HackathonGroupViewModel htest = HackathonGroupViewModel.CreateHackathonGroupViewModel(db.Groups.OfType<HackathonGroup>().Where(x => x.GroupId == id).FirstOrDefault());
             if (htest == null)
             {
                 return NotFound();

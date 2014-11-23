@@ -20,9 +20,9 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/SponsorGroups
-        public IQueryable<SponsorGroupViewModel> GetGroups()
+        public IEnumerable<SponsorGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<SponsorGroup>().Select(x => new SponsorGroupViewModel(x));
+            return db.Groups.OfType<SponsorGroup>().Select(x => SponsorGroupViewModel.CreateSponsorGroupViewModel(x));
         }
 
         // GET: api/SponsorGroups/5
@@ -30,7 +30,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(SponsorGroup))]
         public IHttpActionResult GetSponsorGroup(Guid id)
         {
-            SponsorGroupViewModel stest = new SponsorGroupViewModel(db.Groups.OfType<SponsorGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            SponsorGroupViewModel stest = SponsorGroupViewModel.CreateSponsorGroupViewModel(db.Groups.OfType<SponsorGroup>().Where(x => x.GroupId == id).FirstOrDefault());
             if (stest == null)
             {
                 return NotFound();

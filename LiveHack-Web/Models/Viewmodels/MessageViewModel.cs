@@ -8,13 +8,15 @@ namespace LiveHack_Web.Models.Viewmodels
 {
     public class MessageViewModel
     {
-        public MessageViewModel(Message message)
+        public static MessageViewModel CreateMessageViewModel(Message message)
         {
-            this.MessageId = message.MessageId;
-            this.Sender = new UserViewModel(message.Sender);
-            this.Group = new GroupViewModel(message.Group);
-            this.Body = message.Body;
-            this.SendTime = message.SendTime;
+            MessageViewModel model = new MessageViewModel();
+            model.MessageId = message.MessageId;
+            model.Sender = UserViewModel.CreateUserViewModel(message.Sender);
+            model.Group = GroupViewModel.CreateGroupViewModel(message.Group);
+            model.Body = message.Body;
+            model.SendTime = message.SendTime;
+            return model;
         }
         
         public Guid MessageId { get; set; }

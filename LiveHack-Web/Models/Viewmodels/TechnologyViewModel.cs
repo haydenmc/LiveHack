@@ -8,10 +8,12 @@ namespace LiveHack_Web.Models.Viewmodels
 {
     public class TechnologyViewModel
     {
-         public TechnologyViewModel(Technology tech)
+         public static TechnologyViewModel CreateTechnologyViewModel(Technology tech)
 		{
-            this.TechnologyId  = tech.TechnologyId;
-            this.Name          = tech.Name;
+            TechnologyViewModel model = new TechnologyViewModel();
+            model.TechnologyId  = tech.TechnologyId;
+            model.Name          = tech.Name;
+            return model;
 		}
         public Guid TechnologyId { get; set; }
         public string Name { get; set; }

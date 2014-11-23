@@ -20,9 +20,9 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/TeamGroups
-        public IQueryable<TeamGroupViewModel> GetGroups()
+        public IEnumerable<TeamGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<TeamGroup>().Select(x => new TeamGroupViewModel(x));
+            return db.Groups.OfType<TeamGroup>().Select(x => TeamGroupViewModel.CreateTeamGroupViewModel(x));
         }
 
         // GET: api/TeamGroups/5
@@ -30,7 +30,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(TeamGroup))]
         public IHttpActionResult GetTeamGroup(Guid id)
         {
-            TeamGroupViewModel ttest = new TeamGroupViewModel(db.Groups.OfType<TeamGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            TeamGroupViewModel ttest = TeamGroupViewModel.CreateTeamGroupViewModel(db.Groups.OfType<TeamGroup>().Where(x => x.GroupId == id).FirstOrDefault());
             if (ttest == null)
             {
                 return NotFound();
