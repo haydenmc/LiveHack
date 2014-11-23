@@ -10,24 +10,28 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
+    [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Users
-        public IQueryable<User> GetUsers()
+        [Route("")]
+        public IQueryable<UserViewModel> GetUsers()
         {
-            return db.Users;
+            return db.Users.Select(x => new UserViewModel(x));
         }
 
         // GET: api/Users/5
+        [Route("{id}")]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(string id)
         {
-            User user = db.Users.Find(id);
+            UserViewModel user = new UserViewModel(db.Users.Find(id));
             if (user == null)
             {
                 return NotFound();

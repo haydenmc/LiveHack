@@ -10,24 +10,28 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
+    [RoutePrefix("api/Groups")]
     public class GroupsController : ApiController
     {
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Groups
-        public IQueryable<Group> GetGroups()
+        [Route("")]
+        public IQueryable<GroupViewModel> GetGroups()
         {
-            return db.Groups;
+            return db.Groups.Select(x => new GroupViewModel(x));
         }
 
         // GET: api/Groups/5
+        [Route("{id}")]
         [ResponseType(typeof(Group))]
         public IHttpActionResult GetGroup(Guid id)
         {
-            Group group = db.Groups.Find(id);
+            GroupViewModel group = new GroupViewModel(db.Groups.Find(id));
             if (group == null)
             {
                 return NotFound();

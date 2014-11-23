@@ -10,24 +10,28 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
+    [RoutePrefix("api/Institutions")]
     public class InstitutionsController : ApiController
     {
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Institutions
-        public IQueryable<Institution> GetInstitutions()
+        [Route("")]
+        public IQueryable<InstitutionViewModel> GetInstitutions()
         {
-            return db.Institutions;
+            return db.Institutions.Select(x => new InstitutionViewModel(x);
         }
 
         // GET: api/Institutions/5
+        [Route("{id}")]
         [ResponseType(typeof(Institution))]
         public IHttpActionResult GetInstitution(Guid id)
         {
-            Institution institution = db.Institutions.Find(id);
+            InstitutionViewModel institution = new InstitutionViewModel(db.Institutions.Find(id));
             if (institution == null)
             {
                 return NotFound();
