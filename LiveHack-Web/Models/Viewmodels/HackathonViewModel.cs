@@ -10,9 +10,25 @@ namespace LiveHack_Web.Models.Viewmodels
 	{
 		public HackathonViewModel(Hackathon hack)
 		{
-			
+			this.HackathonId	= hack.HackathonId;
+			this.Name			= hack.Name;
+			this.ShortName		= hack.ShortName;
+			this.Description	= hack.Description;
+			this.StartDateTime	= hack.StartDateTime;
+			this.EndDateTime	= hack.EndDateTime;
+			//this.Institution	= new InstitutionViewModel(hack.Institution);
+			//this.Users		= hack.Users.Select(x => new UserViewModel(x));
+			//this.Groups		= hack.Groups.Select(x => new GroupViewModel(x));
 		}
 
 		public Guid HackathonId { get; set; }
+		public String Name { get; set; }
+		public String ShortName { get; set; }
+		public String Description { get; set; }
+		public DateTimeOffset StartDateTime { get; set; }
+		public DateTimeOffset EndDateTime { get; set; }
+		//public InstitutionViewModel Institution { get; set; }
+		//public ICollection<UserViewModel> Users { get; set; }
+		//public ICollection<HackathonGroupViewModel> Groups { get; set; }
 	}
 }
