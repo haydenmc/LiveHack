@@ -13,17 +13,20 @@ using LiveHackDb.Models;
 
 namespace LiveHack_Web.Controllers
 {
+    [RoutePrefix("api/Groups")]
     public class GroupsController : ApiController
     {
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Groups
+        [Route("")]
         public IQueryable<Group> GetGroups()
         {
             return db.Groups;
         }
 
         // GET: api/Groups/5
+        [Route("{id}")]
         [ResponseType(typeof(Group))]
         public IHttpActionResult GetGroup(Guid id)
         {

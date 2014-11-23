@@ -13,17 +13,20 @@ using LiveHackDb.Models;
 
 namespace LiveHack_Web.Controllers
 {
+    [RoutePrefix("api/Technologies")]
     public class TechnologiesController : ApiController
     {
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Technologies
+        [Route[""]]
         public IQueryable<Technology> GetTechnologies()
         {
             return db.Technologies;
         }
 
         // GET: api/Technologies/5
+        [Route("{id}")]
         [ResponseType(typeof(Technology))]
         public IHttpActionResult GetTechnology(Guid id)
         {
