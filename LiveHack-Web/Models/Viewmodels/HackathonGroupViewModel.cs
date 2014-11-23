@@ -6,11 +6,13 @@ using System.Web;
 
 namespace LiveHack_Web.Models.Viewmodels
 {
-	public class HackathonGroupViewModel
+	public class HackathonGroupViewModel : GroupViewModel
 	{
 		public HackathonGroupViewModel(HackathonGroup group)
 		{
-
+			
 		}
+
+		public Guid GroupId { get; set }
 	}
 }

@@ -214,6 +214,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
+    <Compile Include="Models\Viewmodels\GroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\HackathonGroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\InstitutionViewModel.cs" />
     <Compile Include="Models\Viewmodels\HackathonViewModel.cs" />
