@@ -40,6 +40,7 @@ namespace LiveHack_Web.Controllers
             return Ok(institution);
         }
 
+        [Route("")]
         public IHttpActionResult Post(InstitutionBindingModel institution)
         {
             var model = new Institution()
@@ -53,6 +54,7 @@ namespace LiveHack_Web.Controllers
             try
             {
                 db.SaveChanges();
+         
             }
             catch (DbUpdateException)
             {

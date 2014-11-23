@@ -40,6 +40,7 @@ namespace LiveHack_Web.Controllers
             return Ok(technology);
         }
 
+        [Route("")]
         public IHttpActionResult Post(TechnologyBindingModel technology)
         {
             var model = new Technology()

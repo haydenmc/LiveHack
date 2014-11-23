@@ -40,6 +40,7 @@ namespace LiveHack_Web.Controllers
             return Ok(user);
         }
 
+        [Route("")]
         public IHttpActionResult Post(UserBindingModel user)
         {
             var model = new User()

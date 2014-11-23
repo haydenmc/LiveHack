@@ -44,6 +44,7 @@ namespace LiveHack_Web.Controllers
             if (disposing)
             {
                 db.Dispose();
+               
             }
             base.Dispose(disposing);
         }
