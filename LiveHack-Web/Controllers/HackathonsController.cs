@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
 using LiveHack_Web.Models.Viewmodels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LiveHack_Web.Controllers
 {
@@ -46,6 +48,28 @@ namespace LiveHack_Web.Controllers
 		{
 			return db.Groups.OfType<SponsorGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => new SponsorGroupViewModel(x));
 		}
+
+        //GET: api/Hackathon/5/TeamGroups
+        [Route("{id}/TeamGroups")]
+        public IQueryable<TeamGroupViewModel> GetTeamGroups(Guid id)
+        {
+            return db.Groups.OfType<TeamGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => new TeamGroupViewModel(x));
+        }
+
+        //GET: api/Hackathon/5/TechnologyGroups
+        [Route("{id}/TeamGroups")]
+        public IQueryable<TechnologyGroupViewModel> GetTechnologyGroups(Guid id)
+        {
+            return db.Groups.OfType<TechnologyGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => new TechnologyGroupViewModel(x));
+        }
+
+        //GET: api/Hackathon/5/MyGroups
+        [Route("{id}/MyGroups")]
+        public IQueryable<GroupViewModel> GetMyGroups(Guid id)
+        {
+            string currentUserId = User.Identity.GetUserId();
+            return db.Groups.Where(g => g.Members.Where(u => u.Id == currentUserId).Count() > 0).Select(x => new GroupViewModel(x));
+        }
 
 		//POST: api/Hackathons
 		[Route("")]
