@@ -8,15 +8,17 @@ namespace LiveHack_Web.Models.Viewmodels
 {
     public class InstitutionViewModel
     {
-        public InstitutionViewModel(Institution ins)
+        public static InstitutionViewModel CreateInstitutionViewModel(Institution ins)
 		{
-            this.InstitutionId  = ins.InstitutionId;
-            this.Name           = ins.Name;
-            this.ZipCode        = ins.ZipCode;
-			this.GroupId		= ins.Group.GroupId;
+            InstitutionViewModel model = new InstitutionViewModel();
+            model.InstitutionId  = ins.InstitutionId;
+            model.Name           = ins.Name;
+            model.ZipCode        = ins.ZipCode;
+			model.GroupId		= ins.Group.GroupId;
 			//this.Group			= new InstitutionGroupViewModel(ins.Group);
             //this.Users			= ins.Users.Select(x => new UserViewModel(x)).ToList();
-		}
+            return model;
+        }
         public Guid InstitutionId { get; set; }
         public string Name { get; set; }
         public string ZipCode { get; set; }

@@ -20,9 +20,9 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/TechnologyGroups
-        public IQueryable<TechnologyGroupViewModel> GetGroups()
+        public IEnumerable<TechnologyGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<TechnologyGroup>().Select(x => new TechnologyGroupViewModel(x));
+            return db.Groups.OfType<TechnologyGroup>().Select(x => TechnologyGroupViewModel.CreateTechnologyGroupViewModel(x));
         }
 
         // GET: api/TechnologyGroups/5
@@ -30,7 +30,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(TechnologyGroup))]
         public IHttpActionResult GetTechnologyGroup(Guid id)
         {
-            TechnologyGroupViewModel techtest = new TechnologyGroupViewModel(db.Groups.OfType<TechnologyGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            TechnologyGroupViewModel techtest = TechnologyGroupViewModel.CreateTechnologyGroupViewModel(db.Groups.OfType<TechnologyGroup>().Where(x => x.GroupId == id).FirstOrDefault());
             if (techtest == null)
             {
                 return NotFound();

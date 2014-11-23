@@ -20,9 +20,9 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/InstitutionGroups
-        public IQueryable<InstitutionGroupViewModel> GetGroups()
+        public IEnumerable<InstitutionGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<InstitutionGroup>().Select(x => new InstitutionGroupViewModel(x));
+            return db.Groups.OfType<InstitutionGroup>().Select(x => InstitutionGroupViewModel.CreateInstitutionGroupViewModel(x));
         }
 
         // GET: api/InstitutionGroups/5
@@ -30,7 +30,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(InstitutionGroup))]
         public IHttpActionResult GetInstitutionGroup(Guid id)
         {
-            InstitutionGroupViewModel itest = new InstitutionGroupViewModel(db.Groups.OfType<InstitutionGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            InstitutionGroupViewModel itest = InstitutionGroupViewModel.CreateInstitutionGroupViewModel(db.Groups.OfType<InstitutionGroup>().Where(x => x.GroupId == id).FirstOrDefault());
             if (itest == null)
             {
                 return NotFound();

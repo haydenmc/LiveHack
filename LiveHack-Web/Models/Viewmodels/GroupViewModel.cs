@@ -8,15 +8,17 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class GroupViewModel
 	{
-		public GroupViewModel(Group group)
+		public static GroupViewModel CreateGroupViewModel(Group group)
 		{
-			this.GroupId		= group.GroupId;
-			this.Members		= group.Members.Select(x => new UserViewModel(x)).ToList();
-			this.Guests			= group.Guests.Select(x => new UserViewModel(x)).ToList();
-			this.Name			= group.Name;
-			this.Description	= group.Description;
-			this.Url			= group.Url;
-			this.Messages		= group.Messages.Select(x => new MessageViewModel(x)).ToList();
+            GroupViewModel model = new GroupViewModel();
+			model.GroupId		= group.GroupId;
+			model.Members		= group.Members.Select(x => UserViewModel.CreateUserViewModel(x)).ToList();
+			model.Guests		= group.Guests.Select(x => UserViewModel.CreateUserViewModel(x)).ToList();
+			model.Name			= group.Name;
+			model.Description	= group.Description;
+			model.Url			= group.Url;
+			model.Messages		= group.Messages.Select(x => MessageViewModel.CreateMessageViewModel(x)).ToList();
+            return model;
 		}
 
 		public Guid GroupId { get; set; }
