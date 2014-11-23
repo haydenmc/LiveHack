@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Institution))]
         public IHttpActionResult GetInstitution(Guid id)
         {
-			InstitutionBindingModel institution = new InstitutionViewModel(db.Institutions.Find(id));
+			InstitutionViewModel institution = new InstitutionViewModel(db.Institutions.Find(id));
             if (institution == null)
             {
                 return NotFound();
