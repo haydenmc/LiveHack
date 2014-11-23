@@ -40,29 +40,29 @@ namespace LiveHack_Web.Controllers
             return Ok(user);
         }
 
-        [Route("")]
-        public IHttpActionResult Post(UserBindingModel user)
-        {
-            var model = new User()
-            {
-                Id = user.Id,
-                Email = user.Email
-               // Institution = ,
-            };
+		//[Route("")]
+		//public IHttpActionResult Post(UserBindingModel user)
+		//{
+		//	var model = new User()
+		//	{
+		//		Id = user.Id,
+		//		Email = user.Email
+		//	   // Institution = ,
+		//	};
 
-            db.Users.Add(model);
+		//	db.Users.Add(model);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                throw;
-            }
+		//	try
+		//	{
+		//		db.SaveChanges();
+		//	}
+		//	catch (DbUpdateException)
+		//	{
+		//		throw;
+		//	}
 
-            return Ok();
-        }
+		//	return Ok();
+		//}
 
         protected override void Dispose(bool disposing)
         {
