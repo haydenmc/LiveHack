@@ -19,7 +19,7 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Technologies
-        [Route[""]]
+        [Route("")]
         public IQueryable<Technology> GetTechnologies()
         {
             return db.Technologies;
