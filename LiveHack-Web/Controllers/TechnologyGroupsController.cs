@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
@@ -18,22 +20,23 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/TechnologyGroups
-        public IQueryable<TechnologyGroup> GetGroups()
+        public IQueryable<TechnologyGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<TechnologyGroup>();
+            return db.Groups.OfType<TechnologyGroup>().Select(x => new TechnologyGroupViewModel(x));
         }
 
         // GET: api/TechnologyGroups/5
+        [Route("{id}")]
         [ResponseType(typeof(TechnologyGroup))]
         public IHttpActionResult GetTechnologyGroup(Guid id)
         {
-            TechnologyGroup technologyGroup = db.Groups.OfType<TechnologyGroup>().Where(x => x.GroupId == id).FirstOrDefault();
-            if (technologyGroup == null)
+            TechnologyGroupViewModel techtest = new TechnologyGroupViewModel(db.Groups.OfType<TechnologyGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            if (techtest == null)
             {
                 return NotFound();
             }
 
-            return Ok(technologyGroup);
+            return Ok(techtest);
         }
 
         protected override void Dispose(bool disposing)
