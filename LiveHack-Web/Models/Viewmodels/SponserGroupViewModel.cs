@@ -5,7 +5,8 @@ using System.Web;
 
 namespace LiveHack_Web.Models.Viewmodels
 {
-	public class SponserGroupViewModel
+	public class SponserGroupViewModel : TeamGroupViewModel
 	{
+		
 	}
 }

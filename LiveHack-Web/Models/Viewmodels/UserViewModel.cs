@@ -12,13 +12,13 @@ namespace LiveHack_Web.Models.Viewmodels
         {
             this.Id          = user.Id;
             this.Email       = user.Email;
-            //this.Hackathon   = user.Hackathons.Select(x => new HackathonViewModel(x));
-            //this.Institution = new InstitutionViewModel(user.Institution);
+            this.Hackathons   = user.Hackathons.Select(x => new HackathonViewModel(x)).ToList();
+            this.Institution = new InstitutionViewModel(user.Institution);
 
         }
 
-        //public virtual ICollection<Hackathon> Hackathons { get; set; }
-        //public virtual Institution Institution { get; set; }
+        public ICollection<HackathonViewModel> Hackathons { get; set; }
+        public InstitutionViewModel Institution { get; set; }
         public string Id { get; set; }
         public string Email { get; set; }
     }
