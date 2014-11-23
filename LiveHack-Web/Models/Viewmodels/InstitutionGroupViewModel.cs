@@ -8,11 +8,11 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class InstitutionGroupViewModel : GroupViewModel
 	{
-		public static InstitutionGroupViewModel CreateInstitutionGroupViewModel(InstitutionGroup group) : base(group)
+		public static InstitutionGroupViewModel CreateInstitutionGroupViewModel(InstitutionGroup group)
 		{
-            InstitutionGroupViewModel model = new InstitutionGroupViewModel();
-			model.Institution = InstitutionViewModel.CreateInstitutionViewModel(group.Institution);
-	    	return model;
+            InstitutionGroupViewModel model = InstitutionGroupViewModel.CreateInstitutionGroupViewModel(group);
+			((InstitutionGroupViewModel)model).Institution = InstitutionViewModel.CreateInstitutionViewModel(group.Institution);
+	    	return (InstitutionGroupViewModel)model;
         }
 		public InstitutionViewModel Institution { get; set; }
 	}

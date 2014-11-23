@@ -8,11 +8,11 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class HackathonGroupViewModel : GroupViewModel
 	{
-		public static HackathonGroupViewModel CreateHackathonGroupViewModel(HackathonGroup group) : base(group)
+		public static HackathonGroupViewModel CreateHackathonGroupViewModel(HackathonGroup group)
 		{
-            HackathonGroupViewModel model = new HackathonGroupViewModel();
-			model.Hackathon = HackathonViewModel.CreateHackathonViewModel(group.Hackathon);
-		    return model;
+            HackathonGroupViewModel model = HackathonGroupViewModel.CreateHackathonGroupViewModel(group);
+			((HackathonGroupViewModel)model).Hackathon = HackathonViewModel.CreateHackathonViewModel(group.Hackathon);
+		    return (HackathonGroupViewModel)model;
         }
 
 		public HackathonViewModel Hackathon { get; set; }

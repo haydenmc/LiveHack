@@ -8,9 +8,9 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class SponsorGroupViewModel : TeamGroupViewModel
 	{
-		public static SponsorGroupViewModel CreateSponsorGroupViewModel(SponsorGroup group) : base(group)
+		public static SponsorGroupViewModel CreateSponsorGroupViewModel(SponsorGroup group)
 		{
-
+            return (SponsorGroupViewModel)TeamGroupViewModel.CreateTeamGroupViewModel(group);
 		}
 	}
 }

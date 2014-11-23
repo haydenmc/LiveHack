@@ -8,11 +8,11 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class TeamGroupViewModel : GroupViewModel
 	{
-		public static TeamGroupViewModel CreateTeamGroupViewModel(TeamGroup group) : base(group)
+		public static TeamGroupViewModel CreateTeamGroupViewModel(TeamGroup group)
 		{
-            TeamGroupViewModel model = new TeamGroupViewModel();
-			model.TechnologiesUsing = group.TechnologiesUsing.Select(x => TechnologyViewModel.CreateTechnologyViewModel(x)).ToList();
-            return model;
+            TeamGroupViewModel model = TeamGroupViewModel.CreateTeamGroupViewModel(group);
+			((TeamGroupViewModel)model).TechnologiesUsing = group.TechnologiesUsing.Select(x => TechnologyViewModel.CreateTechnologyViewModel(x)).ToList();
+            return (TeamGroupViewModel)model;
 		}
 		public ICollection<TechnologyViewModel> TechnologiesUsing { get; set; }
 	}
