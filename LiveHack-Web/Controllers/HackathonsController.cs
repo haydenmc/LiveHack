@@ -71,6 +71,14 @@ namespace LiveHack_Web.Controllers
 			return db.Groups.Where(g => g.Members.Where(u => u.Id == currentUserId).Count() > 0).ToList().Select(x => GroupViewModel.CreateGroupViewModel(x));
         }
 
+		//Post: api/Hackathons/5/Join
+		[Route("{id}/Join")]
+		public IHttpActionResult PostJoin(String id)
+		{
+			
+			return null;
+		}
+
 		//POST: api/Hackathons
 		[Route("")]
 		public IHttpActionResult Post(HackathonBindingModel hackathon)
@@ -98,8 +106,7 @@ namespace LiveHack_Web.Controllers
 				Name = hackathon.Name,
 				Description = hackathon.Description,
 				Url = hackathon.Url,
-				Messages = new List<Message>(),
-				
+				Messages = new List<Message>()	
 			};
 			db.Groups.Add(group);
 			model.Groups.Add(group);
