@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
@@ -20,9 +21,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Technologies
         [Route[""]]
-        public IQueryable<Technology> GetTechnologies()
+        public IQueryable<TechnologyViewModel> GetTechnologies()
         {
-            return db.Technologies;
+            return db.Technologies.Select(x => new TechnologyViewModel(x));
         }
 
         // GET: api/Technologies/5
@@ -30,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Technology))]
         public IHttpActionResult GetTechnology(Guid id)
         {
-            Technology technology = db.Technologies.Find(id);
+            TechnologyViewModel technology = new TechnologyViewModel(db.Technologies.Find(id));
             if (technology == null)
             {
                 return NotFound();
