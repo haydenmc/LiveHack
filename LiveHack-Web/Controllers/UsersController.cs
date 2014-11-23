@@ -40,6 +40,28 @@ namespace LiveHack_Web.Controllers
             return Ok(user);
         }
 
+        public IHttpActionResult Post(UserBindingModel user)
+        {
+            var model = new User()
+            {
+                Hackathons = new List<Hackathon>(),
+                Institution = new Institution(),
+            };
+
+            db.Users.Add(model);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                throw;
+            }
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
