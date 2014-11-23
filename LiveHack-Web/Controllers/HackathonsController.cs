@@ -31,9 +31,9 @@ namespace LiveHack_Web.Controllers
         // GET: api/Hackathons/5
 		[Route("{id}")]
         [ResponseType(typeof(Hackathon))]
-        public IHttpActionResult GetHackathon(Guid id)
+        public IHttpActionResult GetHackathon(String id)
         {
-            HackathonViewModel hackathon = HackathonViewModel.CreateHackathonViewModel(db.Hackathons.Find(id));
+            HackathonViewModel hackathon = HackathonViewModel.CreateHackathonViewModel(db.Hackathons.Where(x => x.ShortName == id).FirstOrDefault());
             if (hackathon == null)
             {
                 return NotFound();
