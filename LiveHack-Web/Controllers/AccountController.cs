@@ -176,7 +176,7 @@ namespace LiveHack_Web.Controllers
 					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Index", "Hackathon");
 				}
 				AddErrors(result);
 			}
@@ -400,12 +400,13 @@ namespace LiveHack_Web.Controllers
 
 		//
 		// POST: /Account/LogOff
+		[HttpGet]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult LogOff()
 		{
 			AuthenticationManager.SignOut();
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Hackathon");
 		}
 
 		//
@@ -462,7 +463,7 @@ namespace LiveHack_Web.Controllers
 			{
 				return Redirect(returnUrl);
 			}
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Hackathon");
 		}
 
 		internal class ChallengeResult : HttpUnauthorizedResult

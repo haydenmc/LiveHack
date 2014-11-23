@@ -1,36 +1,57 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@font-face {
+    font-family: 'TeX Gyre Adventor';
+    src: url('fonts/texgyreadventor-regular-webfont.eot');
+    src: url('fonts/texgyreadventor-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/texgyreadventor-regular-webfont.woff') format('woff'),
+         url('fonts/texgyreadventor-regular-webfont.ttf') format('truetype'),
+         url('fonts/texgyreadventor-regular-webfont.svg#texgyreadventorregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+@font-face {
+    font-family: 'TeX Gyre Adventor';
+    src: url('fonts/texgyreadventor-bold-webfont.eot');
+    src: url('fonts/texgyreadventor-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/texgyreadventor-bold-webfont.woff') format('woff'),
+         url('fonts/texgyreadventor-bold-webfont.ttf') format('truetype'),
+         url('fonts/texgyreadventor-bold-webfont.svg#texgyreadventorbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+@font-face {
+    font-family: 'TeX Gyre Adventor';
+    src: url('fonts/texgyreadventor-bolditalic-webfont.eot');
+    src: url('fonts/texgyreadventor-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/texgyreadventor-bolditalic-webfont.woff') format('woff'),
+         url('fonts/texgyreadventor-bolditalic-webfont.ttf') format('truetype'),
+         url('fonts/texgyreadventor-bolditalic-webfont.svg#texgyreadventorbold_italic') format('svg');
+    font-weight: bold;
+    font-style: italic;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+@font-face {
+    font-family: 'TeX Gyre Adventor';
+    src: url('fonts/texgyreadventor-italic-webfont.eot');
+    src: url('fonts/texgyreadventor-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/texgyreadventor-italic-webfont.woff') format('woff'),
+         url('fonts/texgyreadventor-italic-webfont.ttf') format('truetype'),
+         url('fonts/texgyreadventor-italic-webfont.svg#texgyreadventoritalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
 }
 
-/* Set padding to display errors that occur during databinding */
-.padding-error {
-    padding-top: 20px;
+body {
+    font-family: 'TeX Gyre Adventor';
+	color:#fff;
+	background-color:#000;
 }
 
-@media only screen and (max-width: 767px) {
-    .nofloat {
-        float: none;
-        padding: 10px 15px;
-    }
+h1 {
+	font-family: 'TeX Gyre Adventor';
+	font-size: 64px;
+	font-weight:bold;
+	text-transform:uppercase;
+	border-bottom: solid 3px #0053ff;
 }

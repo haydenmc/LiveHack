@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hackathon</title>
+	<script src="~/Content/components/webcomponentsjs/webcomponents.js"></script>
+	<link rel="import" href="~/Content/elements/livehack-datasource/livehack-datasource.html">
+	<link rel="import" href="~/Content/elements/livehack-navbar/livehack-navbar.html">
+</head>
+<body fullbleed horizontal layout unresolved>
+	<template is="auto-binding">
+		<livehack-datasource mygroups="{{ mygroups }}"></livehack-datasource>
+
+		<livehack-navbar width="320">
+			<h1>THIS IS A TEST!</h1>
+			<div vertical layout>
+				<template repeat="{{ mygroups }}">
+					<p>Ding! {{ name }}</p>
+				</template>
+			</div>
+		</livehack-navbar>
+		<div flex>
+			<h1>This is where details go.</h1>
+		</div>
+	</template>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<link rel="import" href="../../components/core-ajax/core-ajax.html">
+<polymer-element name="livehack-datasource" attributes="mygroups" hidden>
+	<template></template>
+	<script>
+		Polymer( {
+			mygroups: [ { name: "Group One" },
+					{ name: "Group Two" },
+					{ name: "Group Poop" }],
+			ready: function () {
+				this.mygroups = [{ name: "Group One" },
+					{ name: "Group Two" },
+					{ name: "Group Poop" }];
+			}
+		});
+	</script>
+</polymer-element>
