@@ -6,9 +6,9 @@ using LiveHackDb.Models;
 
 namespace LiveHack_Web.Models.Viewmodels
 {
-    public class TechnologyViewModel
+    public class TechnologyBindingModel
     {
-         public TechnologyViewModel(Technology tech)
+         public TechnologyBindingModel(Technology tech)
 		{
             this.TechnologyId  = tech.TechnologyId;
             this.Name          = tech.Name;

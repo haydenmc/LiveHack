@@ -23,7 +23,7 @@ namespace LiveHack_Web.Controllers
         [Route("")]
         public IQueryable<InstitutionViewModel> GetInstitutions()
         {
-            return db.Institutions.Select(x => new InstitutionViewModel(x));
+			return db.Institutions.Select(x => new InstitutionViewModel(x));
         }
 
         // GET: api/Institutions/5
@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Institution))]
         public IHttpActionResult GetInstitution(Guid id)
         {
-            InstitutionViewModel institution = new InstitutionViewModel(db.Institutions.Find(id));
+			InstitutionBindingModel institution = new InstitutionViewModel(db.Institutions.Find(id));
             if (institution == null)
             {
                 return NotFound();

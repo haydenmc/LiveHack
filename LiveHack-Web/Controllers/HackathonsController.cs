@@ -23,9 +23,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Hackathons
 		[Route("")]
-        public IQueryable<HackathonBindingModel> GetHackathons()
+        public IQueryable<HackathonViewModel> GetHackathons()
         {
-            return db.Hackathons.Select(x => new HackathonBindingModel(x));
+            return db.Hackathons.Select(x => new HackathonViewModel(x));
         }
 
         // GET: api/Hackathons/5
@@ -33,7 +33,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Hackathon))]
         public IHttpActionResult GetHackathon(Guid id)
         {
-            HackathonBindingModel hackathon = new HackathonBindingModel(db.Hackathons.Find(id));
+            HackathonViewModel hackathon = new HackathonViewModel(db.Hackathons.Find(id));
             if (hackathon == null)
             {
                 return NotFound();
@@ -73,8 +73,32 @@ namespace LiveHack_Web.Controllers
 
 		//POST: api/Hackathons
 		[Route("")]
-		public IHttpActionResult Post()
+		public IHttpActionResult Post(HackathonBindingModel hackathon)
 		{
+			var model = new Hackathon() 
+			{
+ 				HackathonId = Guid.NewGuid(),
+				Name = hackathon.Name,
+				ShortName = hackathon.ShortName,
+				Description = hackathon.Description,
+				StartDateTime = hackathon.StartDateTime,
+				EndDateTime = hackathon.EndDateTime,
+				Institution = db.Institutions.Find(hackathon.InstitutionId),
+				Users = new List<User>(),
+				Groups = new List<HackathonGroup>()
+			};
+
+			db.Hackathons.Add(model);
+
+			try
+			{
+				db.SaveChanges();
+			}
+			catch(DbUpdateException)
+			{
+				throw;
+			}
+
 			return Ok();
 		}
 

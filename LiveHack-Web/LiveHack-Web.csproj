@@ -232,7 +232,6 @@
     <Compile Include="Models\MeViewModels.cs" />
     <Compile Include="Models\Viewmodels\GroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\HackathonGroupViewModel.cs" />
-    <Compile Include="Models\Viewmodels\HackathonsTestController.cs" />
     <Compile Include="Models\Viewmodels\InstitutionGroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\SponsorGroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\TeamGroupViewModel.cs" />

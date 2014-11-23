@@ -6,9 +6,9 @@ using System.Web;
 
 namespace LiveHack_Web.Models.Viewmodels
 {
-	public class HackathonBindingModel
+	public class HackathonViewModel
 	{
-		public HackathonBindingModel(Hackathon hack)
+		public HackathonViewModel(Hackathon hack)
 		{
 			this.HackathonId	= hack.HackathonId;
 			this.Name			= hack.Name;

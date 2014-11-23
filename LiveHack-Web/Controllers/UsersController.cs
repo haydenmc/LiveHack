@@ -23,7 +23,7 @@ namespace LiveHack_Web.Controllers
         [Route("")]
         public IQueryable<UserViewModel> GetUsers()
         {
-            return db.Users.Select(x => new UserViewModel(x));
+			return db.Users.Select(x => new UserViewModel(x));
         }
 
         // GET: api/Users/5
@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(string id)
         {
-            UserViewModel user = new UserViewModel(db.Users.Find(id));
+			UserViewModel user = new UserViewModel(db.Users.Find(id));
             if (user == null)
             {
                 return NotFound();
