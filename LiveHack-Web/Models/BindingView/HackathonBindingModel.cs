@@ -20,5 +20,7 @@ namespace LiveHack_Web.Models.Viewmodels
 		//public InstitutionViewModel Institution { get; set; }
 		//public ICollection<UserViewModel> Users { get; set; }
 		//public ICollection<HackathonGroupViewModel> Groups { get; set; }
+
+		public string Url { get; set; }
 	}
 }
