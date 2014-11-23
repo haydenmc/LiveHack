@@ -75,8 +75,20 @@ namespace LiveHack_Web.Controllers
 		[Route("{id}/Join")]
 		public IHttpActionResult PostJoin(String id)
 		{
+			var user = db.Users.Where(x => x.Id == User.Identity.GetUserId()).FirstOrDefault();
+
+			db.Hackathons.Where(x => x.ShortName == id).FirstOrDefault().Groups.OfType<HackathonGroup>().FirstOrDefault().Members.Add(user);
 			
-			return null;
+			try
+			{
+				db.SaveChanges();
+			}
+			catch (DbUpdateException)
+			{
+				throw;
+			}
+
+			return Ok();
 		}
 
 		//POST: api/Hackathons
