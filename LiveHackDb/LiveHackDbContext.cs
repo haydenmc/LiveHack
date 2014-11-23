@@ -23,7 +23,7 @@ namespace LiveHackDb
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Institution>().HasOptional(i => i.Group).WithRequired(g => g.Institution);
+			modelBuilder.Entity<Institution>().HasOptional(i => i.Group).WithOptionalPrincipal(g => g.Institution);
 			base.OnModelCreating(modelBuilder);
 		}
 		public DbSet<Hackathon> Hackathons { get; set; }

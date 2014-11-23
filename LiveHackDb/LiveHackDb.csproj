@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201411222259326_Initial.Designer.cs">
       <DependentUpon>201411222259326_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411230717274_MadeInstitutionOptional.cs" />
+    <Compile Include="Migrations\201411230717274_MadeInstitutionOptional.Designer.cs">
+      <DependentUpon>201411230717274_MadeInstitutionOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Hackathon.cs" />
@@ -73,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411222259326_Initial.resx">
       <DependentUpon>201411222259326_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411230717274_MadeInstitutionOptional.resx">
+      <DependentUpon>201411230717274_MadeInstitutionOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

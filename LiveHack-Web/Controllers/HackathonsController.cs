@@ -88,20 +88,22 @@ namespace LiveHack_Web.Controllers
 				Groups = new List<HackathonGroup>()
 			};
 
-			//model.Groups.Add(new HackathonGroup()
-			//{
-			//	GroupId = Guid.NewGuid(),
-			//	Members = new List<User>(),
-			//	Guests = new List<User>(),
-			//	Name = hackathon.Name,
-			//	Description = hackathon.Description,
-			//	Url = hackathon.Url,
-			//	Messages = new List<Message>(),
-			//	Hackathon = model
-			//});
-
 			db.Hackathons.Add(model);
 
+			var group = new HackathonGroup()
+			{
+				GroupId = Guid.NewGuid(),
+				Members = new List<User>(),
+				Guests = new List<User>(),
+				Name = hackathon.Name,
+				Description = hackathon.Description,
+				Url = hackathon.Url,
+				Messages = new List<Message>(),
+				
+			};
+			db.Groups.Add(group);
+			model.Groups.Add(group);
+			
 			try
 			{
 				db.SaveChanges();
