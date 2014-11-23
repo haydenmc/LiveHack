@@ -44,8 +44,9 @@ namespace LiveHack_Web.Controllers
         {
             var model = new User()
             {
-                Hackathons = new List<Hackathon>(),
-                Institution = new Institution(),
+                Id = user.Id,
+                Email = user.Email
+               // Institution = ,
             };
 
             db.Users.Add(model);

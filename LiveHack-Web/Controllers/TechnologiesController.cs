@@ -40,6 +40,29 @@ namespace LiveHack_Web.Controllers
             return Ok(technology);
         }
 
+        public IHttpActionResult Post(TechnologyBindingModel technology)
+        {
+            var model = new Technology()
+            {
+                Name = technology.Name,
+            };
+
+         
+
+            db.Technologies.Add(model);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                throw;
+            }
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

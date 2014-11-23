@@ -44,11 +44,8 @@ namespace LiveHack_Web.Controllers
         {
             var model = new Institution()
             {
-                InstitutionId = Guid.NewGuid(),
                 Name = institution.Name,
                 ZipCode = institution.ZipCode,
-                Users = new List<User>(),
-                Group = new InstitutionGroup()
             };
 
             db.Institutions.Add(model);
