@@ -23,7 +23,7 @@ namespace LiveHack_Web.Controllers
         [Route("")]
         public IQueryable<InstitutionViewModel> GetInstitutions()
         {
-            return db.Institutions.Select(x => new InstitutionViewModel(x);
+            return db.Institutions.Select(x => new InstitutionViewModel(x));
         }
 
         // GET: api/Institutions/5
