@@ -64,6 +64,18 @@ namespace LiveHack_Web.Controllers
 				Groups = new List<HackathonGroup>()
 			};
 
+			model.Groups.Add(new HackathonGroup()
+			{
+				GroupId = Guid.NewGuid(),
+				Members = new List<User>(),
+				Guests = new List<User>(),
+				Name = hackathon.Name,
+				Description = hackathon.Description,
+				Url = hackathon.Url,
+				Messages = new List<Message>(),
+				Hackathon = model
+			});
+
 			db.Hackathons.Add(model);
 
 			try
