@@ -17,7 +17,6 @@ namespace LiveHack_Web.Models.Viewmodels
 			this.Description	= group.Description;
 			this.Url			= group.Url;
 			this.Messages		= group.Messages.Select(x => new MessageViewModel(x)).ToList();
-
 		}
 
 		public Guid GroupId { get; set; }

@@ -205,6 +205,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HackathonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -216,6 +217,10 @@
     <Compile Include="Models\MeViewModels.cs" />
     <Compile Include="Models\Viewmodels\GroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\HackathonGroupViewModel.cs" />
+    <Compile Include="Models\Viewmodels\InstitutionGroupViewModel.cs" />
+    <Compile Include="Models\Viewmodels\SponserGroupViewModel.cs" />
+    <Compile Include="Models\Viewmodels\TeamGroupViewModel.cs" />
+    <Compile Include="Models\Viewmodels\TechnologyGroupViewModel.cs" />
     <Compile Include="Models\Viewmodels\TechnologyViewModel.cs" />
     <Compile Include="Models\Viewmodels\InstitutionViewModel.cs" />
     <Compile Include="Models\Viewmodels\HackathonViewModel.cs" />
