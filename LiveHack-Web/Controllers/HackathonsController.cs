@@ -21,9 +21,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Hackathons
 		[Route("")]
-        public IQueryable<HackathonViewModel> GetHackathons()
+        public IQueryable<HackathonBindingModel> GetHackathons()
         {
-            return db.Hackathons.Select(x => new HackathonViewModel(x));
+            return db.Hackathons.Select(x => new HackathonBindingModel(x));
         }
 
         // GET: api/Hackathons/5
@@ -31,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Hackathon))]
         public IHttpActionResult GetHackathon(Guid id)
         {
-            HackathonViewModel hackathon = new HackathonViewModel(db.Hackathons.Find(id));
+            HackathonBindingModel hackathon = new HackathonBindingModel(db.Hackathons.Find(id));
             if (hackathon == null)
             {
                 return NotFound();
@@ -39,6 +39,20 @@ namespace LiveHack_Web.Controllers
 
             return Ok(hackathon);
         }
+
+		//GET: api/Hackathon/5/SponsorGroups
+		[Route("{id}/SponsorGroups")]
+		public IQueryable<SponsorGroupViewModel> GetSponsorGroups(Guid id)
+		{
+			return db.Groups.OfType<SponsorGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => new SponsorGroupViewModel(x));
+		}
+
+		//POST: api/Hackathons
+		[Route("")]
+		public IHttpActionResult Post()
+		{
+			return Ok();
+		}
 
         protected override void Dispose(bool disposing)
         {
