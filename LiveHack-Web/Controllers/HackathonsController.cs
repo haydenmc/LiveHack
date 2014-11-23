@@ -10,24 +10,28 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
+	[RoutePrefix("api/Hackathons")]
     public class HackathonsController : ApiController
     {
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/Hackathons
-        public IQueryable<Hackathon> GetHackathons()
+		[Route("")]
+        public IQueryable<HackathonViewModel> GetHackathons()
         {
-            return db.Hackathons;
+            return db.Hackathons.Select(x => new HackathonViewModel(x));
         }
 
         // GET: api/Hackathons/5
+		[Route("{id}")]
         [ResponseType(typeof(Hackathon))]
         public IHttpActionResult GetHackathon(Guid id)
         {
-            Hackathon hackathon = db.Hackathons.Find(id);
+            HackathonViewModel hackathon = new HackathonViewModel(db.Hackathons.Find(id));
             if (hackathon == null)
             {
                 return NotFound();
