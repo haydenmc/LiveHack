@@ -8,20 +8,23 @@ namespace LiveHack_Web.Models.Viewmodels
 {
 	public class HackathonViewModel
 	{
-		public HackathonViewModel(Hackathon hack)
+		public static HackathonViewModel CreateHackathonViewModel(Hackathon hack)
 		{
-			this.HackathonId	= hack.HackathonId;
-			this.Name			= hack.Name;
-			this.ShortName		= hack.ShortName;
-			this.Description	= hack.Description;
-			this.StartDateTime	= hack.StartDateTime;
-			this.EndDateTime	= hack.EndDateTime;
-			this.InstitutionId	= hack.Institution.InstitutionId;
-			this.UserIds		= hack.Users.Select(x => new Guid(x.Id)).ToList();
-			this.GroupIds		= hack.Groups.Select(x => x.GroupId).ToList();
+			HackathonViewModel model = new HackathonViewModel();
+			model.HackathonId = hack.HackathonId;
+			model.Name = hack.Name;
+			model.ShortName = hack.ShortName;
+			model.Description = hack.Description;
+			model.StartDateTime = hack.StartDateTime;
+			model.EndDateTime = hack.EndDateTime;
+			model.InstitutionId = hack.Institution == null ? Guid.Empty : hack.Institution.InstitutionId;
+			model.UserIds = hack.Users.Select(x => new Guid(x.Id)).ToList();
+			model.GroupIds = hack.Groups.Select(x => x.GroupId).ToList();
 			//this.Institution	= new InstitutionViewModel(hack.Institution);
 			//this.Users			= hack.Users.Select(x => new UserViewModel(x)).ToList();
 			//this.Groups			= hack.Groups.Select(x => new HackathonGroupViewModel(x)).ToList();
+
+			return model;
 		}
 
 		public Guid HackathonId { get; set; }
