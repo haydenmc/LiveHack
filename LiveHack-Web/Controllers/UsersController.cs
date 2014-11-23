@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
@@ -20,9 +21,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Users
         [Route("")]
-        public IQueryable<User> GetUsers()
+        public IQueryable<UserViewModel> GetUsers()
         {
-            return db.Users;
+            return db.Users.Select(x => new UserViewModel(x));
         }
 
         // GET: api/Users/5
@@ -30,7 +31,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(string id)
         {
-            User user = db.Users.Find(id);
+            UserViewModel user = new UserViewModel(db.Users.Find(id));
             if (user == null)
             {
                 return NotFound();
