@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiveHackDb;
 using LiveHackDb.Models;
+using LiveHack_Web;
+using LiveHack_Web.Models.Viewmodels;
 
 namespace LiveHack_Web.Controllers
 {
@@ -18,22 +20,23 @@ namespace LiveHack_Web.Controllers
         private LiveHackDbContext db = new LiveHackDbContext();
 
         // GET: api/SponsorGroups
-        public IQueryable<SponsorGroup> GetGroups()
+        public IQueryable<SponsorGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<SponsorGroup>();
+            return db.Groups.OfType<SponsorGroup>().Select(x => new SponsorGroupViewModel(x));
         }
 
         // GET: api/SponsorGroups/5
+        [Route("{id}")]
         [ResponseType(typeof(SponsorGroup))]
         public IHttpActionResult GetSponsorGroup(Guid id)
         {
-            SponsorGroup sponsorGroup = db.Groups.OfType<SponsorGroup>().Where( x => x.GroupId == id).FirstOrDefault();
-            if (sponsorGroup == null)
+            SponsorGroupViewModel stest = new SponsorGroupViewModel(db.Groups.OfType<SponsorGroup>().Where(x => x.GroupId == id).FirstOrDefault());
+            if (stest == null)
             {
                 return NotFound();
             }
 
-            return Ok(sponsorGroup);
+            return Ok(stest);
         }
 
         protected override void Dispose(bool disposing)
