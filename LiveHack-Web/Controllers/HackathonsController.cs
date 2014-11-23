@@ -23,9 +23,9 @@ namespace LiveHack_Web.Controllers
 
         // GET: api/Hackathons
 		[Route("")]
-        public IQueryable<HackathonViewModel> GetHackathons()
+        public IEnumerable<HackathonViewModel> GetHackathons()
         {
-            return db.Hackathons.Select(x => new HackathonViewModel(x));
+            return db.Hackathons.ToList().Select(x => HackathonViewModel.CreateHackathonViewModel(x));
         }
 
         // GET: api/Hackathons/5
@@ -33,7 +33,7 @@ namespace LiveHack_Web.Controllers
         [ResponseType(typeof(Hackathon))]
         public IHttpActionResult GetHackathon(Guid id)
         {
-            HackathonViewModel hackathon = new HackathonViewModel(db.Hackathons.Find(id));
+            HackathonViewModel hackathon = HackathonViewModel.CreateHackathonViewModel(db.Hackathons.Find(id));
             if (hackathon == null)
             {
                 return NotFound();
@@ -83,22 +83,22 @@ namespace LiveHack_Web.Controllers
 				Description = hackathon.Description,
 				StartDateTime = hackathon.StartDateTime,
 				EndDateTime = hackathon.EndDateTime,
-				Institution = db.Institutions.Find(hackathon.InstitutionId),
+				//Institution = db.Institutions.Find(hackathon.InstitutionId),
 				Users = new List<User>(),
 				Groups = new List<HackathonGroup>()
 			};
 
-			model.Groups.Add(new HackathonGroup()
-			{
-				GroupId = Guid.NewGuid(),
-				Members = new List<User>(),
-				Guests = new List<User>(),
-				Name = hackathon.Name,
-				Description = hackathon.Description,
-				Url = hackathon.Url,
-				Messages = new List<Message>(),
-				Hackathon = model
-			});
+			//model.Groups.Add(new HackathonGroup()
+			//{
+			//	GroupId = Guid.NewGuid(),
+			//	Members = new List<User>(),
+			//	Guests = new List<User>(),
+			//	Name = hackathon.Name,
+			//	Description = hackathon.Description,
+			//	Url = hackathon.Url,
+			//	Messages = new List<Message>(),
+			//	Hackathon = model
+			//});
 
 			db.Hackathons.Add(model);
 
