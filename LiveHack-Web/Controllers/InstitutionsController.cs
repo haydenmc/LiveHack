@@ -23,7 +23,7 @@ namespace LiveHack_Web.Controllers
         [Route("")]
         public IEnumerable<InstitutionViewModel> GetInstitutions()
         {
-			return db.Institutions.Select(x => InstitutionViewModel.CreateInstitutionViewModel(x));
+			return db.Institutions.ToList().Select(x => InstitutionViewModel.CreateInstitutionViewModel(x));
         }
 
         // GET: api/Institutions/5

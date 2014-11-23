@@ -22,7 +22,7 @@ namespace LiveHack_Web.Controllers
         // GET: api/InstitutionGroups
         public IEnumerable<InstitutionGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<InstitutionGroup>().Select(x => InstitutionGroupViewModel.CreateInstitutionGroupViewModel(x));
+			return db.Groups.OfType<InstitutionGroup>().ToList().Select(x => InstitutionGroupViewModel.CreateInstitutionGroupViewModel(x));
         }
 
         // GET: api/InstitutionGroups/5

@@ -22,7 +22,7 @@ namespace LiveHack_Web.Controllers
         // GET: api/TechnologyGroups
         public IEnumerable<TechnologyGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<TechnologyGroup>().Select(x => TechnologyGroupViewModel.CreateTechnologyGroupViewModel(x));
+			return db.Groups.OfType<TechnologyGroup>().ToList().Select(x => TechnologyGroupViewModel.CreateTechnologyGroupViewModel(x));
         }
 
         // GET: api/TechnologyGroups/5

@@ -22,7 +22,7 @@ namespace LiveHack_Web.Controllers
         // GET: api/SponsorGroups
         public IEnumerable<SponsorGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<SponsorGroup>().Select(x => SponsorGroupViewModel.CreateSponsorGroupViewModel(x));
+			return db.Groups.OfType<SponsorGroup>().ToList().Select(x => SponsorGroupViewModel.CreateSponsorGroupViewModel(x));
         }
 
         // GET: api/SponsorGroups/5

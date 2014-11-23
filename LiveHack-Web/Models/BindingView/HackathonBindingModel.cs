@@ -7,7 +7,7 @@ using System.Web;
 namespace LiveHack_Web.Models.Viewmodels
 {
 	public class HackathonBindingModel
-	{
+	 {
 		//public Guid HackathonId { get; set; }
 		public String Name { get; set; }
 		public String ShortName { get; set; }

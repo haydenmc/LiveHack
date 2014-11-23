@@ -23,7 +23,7 @@ namespace LiveHack_Web.Controllers
         [Route("")]
         public IEnumerable<UserViewModel> GetUsers()
         {
-			return db.Users.Select(x => UserViewModel.CreateUserViewModel(x));
+			return db.Users.ToList().ToList().Select(x => UserViewModel.CreateUserViewModel(x));
         }
 
         // GET: api/Users/5

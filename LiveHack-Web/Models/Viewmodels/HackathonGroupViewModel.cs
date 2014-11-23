@@ -10,9 +10,16 @@ namespace LiveHack_Web.Models.Viewmodels
 	{
 		public static HackathonGroupViewModel CreateHackathonGroupViewModel(HackathonGroup group)
 		{
-            HackathonGroupViewModel model = HackathonGroupViewModel.CreateHackathonGroupViewModel(group);
-			((HackathonGroupViewModel)model).Hackathon = HackathonViewModel.CreateHackathonViewModel(group.Hackathon);
-		    return (HackathonGroupViewModel)model;
+			HackathonGroupViewModel model = new HackathonGroupViewModel();
+			model.GroupId = group.GroupId;
+			model.Members = group.Members.Select(x => UserViewModel.CreateUserViewModel(x)).ToList();
+			model.Guests = group.Guests.Select(x => UserViewModel.CreateUserViewModel(x)).ToList();
+			model.Name = group.Name;
+			model.Description = group.Description;
+			model.Url = group.Url;
+			model.Messages = group.Messages.Select(x => MessageViewModel.CreateMessageViewModel(x)).ToList();
+			model.Hackathon = HackathonViewModel.CreateHackathonViewModel(group.Hackathon);
+			return model;
         }
 
 		public HackathonViewModel Hackathon { get; set; }

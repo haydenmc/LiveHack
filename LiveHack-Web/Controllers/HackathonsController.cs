@@ -44,31 +44,31 @@ namespace LiveHack_Web.Controllers
 
 		//GET: api/Hackathon/5/SponsorGroups
 		[Route("{id}/SponsorGroups")]
-		public IQueryable<SponsorGroupViewModel> GetSponsorGroups(Guid id)
+		public IEnumerable<SponsorGroupViewModel> GetSponsorGroups(Guid id)
 		{
-			return db.Groups.OfType<SponsorGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => SponsorGroupViewModel.CreateSponsorGroupViewModel(x));
+			return db.Groups.OfType<SponsorGroup>().Where(g => g.Hackathon.HackathonId == id).ToList().Select(x => SponsorGroupViewModel.CreateSponsorGroupViewModel(x));
 		}
 
         //GET: api/Hackathon/5/TeamGroups
         [Route("{id}/TeamGroups")]
-        public IQueryable<TeamGroupViewModel> GetTeamGroups(Guid id)
+        public IEnumerable<TeamGroupViewModel> GetTeamGroups(Guid id)
         {
-            return db.Groups.OfType<TeamGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => TeamGroupViewModel.CreateTeamGroupViewModel(x));
+			return db.Groups.OfType<TeamGroup>().Where(g => g.Hackathon.HackathonId == id).ToList().Select(x => TeamGroupViewModel.CreateTeamGroupViewModel(x));
         }
 
         //GET: api/Hackathon/5/TechnologyGroups
         [Route("{id}/TeamGroups")]
-        public IQueryable<TechnologyGroupViewModel> GetTechnologyGroups(Guid id)
+        public IEnumerable<TechnologyGroupViewModel> GetTechnologyGroups(Guid id)
         {
-            return db.Groups.OfType<TechnologyGroup>().Where(g => g.Hackathon.HackathonId == id).Select(x => TechnologyGroupViewModel.CreateTechnologyGroupViewModel(x));
+			return db.Groups.OfType<TechnologyGroup>().Where(g => g.Hackathon.HackathonId == id).ToList().Select(x => TechnologyGroupViewModel.CreateTechnologyGroupViewModel(x));
         }
 
         //GET: api/Hackathon/5/MyGroups
         [Route("{id}/MyGroups")]
-        public IQueryable<GroupViewModel> GetMyGroups(Guid id)
+        public IEnumerable<GroupViewModel> GetMyGroups(Guid id)
         {
             string currentUserId = User.Identity.GetUserId();
-            return db.Groups.Where(g => g.Members.Where(u => u.Id == currentUserId).Count() > 0).Select(x => GroupViewModel.CreateGroupViewModel(x));
+			return db.Groups.Where(g => g.Members.Where(u => u.Id == currentUserId).Count() > 0).ToList().Select(x => GroupViewModel.CreateGroupViewModel(x));
         }
 
 		//POST: api/Hackathons

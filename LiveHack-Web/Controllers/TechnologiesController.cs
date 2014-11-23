@@ -23,7 +23,7 @@ namespace LiveHack_Web.Controllers
         [Route("")]
         public IEnumerable<TechnologyViewModel> GetTechnologies()
         {
-			return db.Technologies.Select(x => TechnologyViewModel.CreateTechnologyViewModel(x));
+			return db.Technologies.ToList().ToList().Select(x => TechnologyViewModel.CreateTechnologyViewModel(x));
         }
 
         // GET: api/Technologies/5

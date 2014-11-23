@@ -22,7 +22,7 @@ namespace LiveHack_Web.Controllers
         // GET: api/HackathonGroups
         public IEnumerable<HackathonGroupViewModel> GetGroups()
         {
-            return db.Groups.OfType<HackathonGroup>().Select(x => HackathonGroupViewModel.CreateHackathonGroupViewModel(x));
+			return db.Groups.OfType<HackathonGroup>().ToList().Select(x => HackathonGroupViewModel.CreateHackathonGroupViewModel(x));
         }
 
         // GET: api/HackathonGroups/5
