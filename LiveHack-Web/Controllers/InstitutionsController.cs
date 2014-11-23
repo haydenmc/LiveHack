@@ -40,6 +40,31 @@ namespace LiveHack_Web.Controllers
             return Ok(institution);
         }
 
+        public IHttpActionResult Post(InstitutionBindingModel institution)
+        {
+            var model = new Institution()
+            {
+                InstitutionId = Guid.NewGuid(),
+                Name = institution.Name,
+                ZipCode = institution.ZipCode,
+                Users = new List<User>(),
+                Group = new InstitutionGroup()
+            };
+
+            db.Institutions.Add(model);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                throw;
+            }
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
