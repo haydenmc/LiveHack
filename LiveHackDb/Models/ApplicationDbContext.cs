@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace LiveHack.Models
+namespace LiveHackDb.Models
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {

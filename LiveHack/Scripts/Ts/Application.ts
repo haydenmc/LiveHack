@@ -1,0 +1,5 @@
+﻿class Application {
+    constructor() {
+
+    }
+}
