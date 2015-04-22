@@ -114,6 +114,7 @@
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="Scripts\application.js" />
+    <Content Include="Scripts\Js\es6-promise-2.0.1.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -165,8 +166,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\Ts\UiElement.ts" />
-    <TypeScriptCompile Include="Scripts\Ts\UiElements\LogInElement.ts" />
+    <Content Include="Scripts\Ts\Data\DataSource.ts" />
+    <Content Include="Scripts\Ts\Data\JsonRequest.ts" />
+    <Content Include="Scripts\Ts\Data\Models\AuthResponse.ts" />
+    <Content Include="Scripts\Ts\UiElement.ts" />
+    <Content Include="Scripts\Ts\UiElements\LogInElement.ts" />
+    <TypeScriptCompile Include="Scripts\Typings\es6-promise.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,9 @@
 LiveHack/Scripts/Application.js
 LiveHack/Content/Style.css
 
+# Compiled Typescript
+LiveHack/Scripts/Ts/**/*.js
+
 # User-specific files
 *.suo
 *.user
