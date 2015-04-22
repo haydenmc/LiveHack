@@ -6,3 +6,65 @@ body {
     color: @color-fg;
     background-color: @color-bg;
 }
+
+.centerContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Common elements */
+
+input[type=text], input[type=email], input[type=password] {
+    display: block;
+    font-size: 22px;
+    color: #fff;
+    padding: 8px 6px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2.5px solid darken(@color-fg, 10%);
+    background-color: transparent;
+
+    &:focus {
+        border-bottom: 2.5px solid @color-accent;
+    }
+}
+
+a.button {
+    display:block;
+    float: left;
+    padding: 8px;
+    background-color: darken(@color-fg, 70%);
+    color: @color-fg;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+
+    &:hover {
+        background-color: darken(@color-fg, 50%);
+    }
+
+    &:active {
+        background-color: darken(@color-fg, 80%);
+    }
+
+    &.active {
+        background-color: @color-accent;
+        &:hover {
+            background-color: lighten(@color-accent, 20%);
+        }
+        &:active {
+            background-color: darken(@color-accent, 20%);
+        }
+    }
+}
+
+/* Element styles */
+@import "UiElements/LogIn.less";

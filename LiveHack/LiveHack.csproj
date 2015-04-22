@@ -141,6 +141,7 @@
     <Content Include="Content\Fonts\OpenSans-Regular-webfont.woff" />
     <Content Include="Content\Less\Fonts.less" />
     <Content Include="Content\Less\Constants.less" />
+    <Content Include="Content\Less\UiElements\LogIn.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Ts\UiElement.ts" />
+    <TypeScriptCompile Include="Scripts\Ts\UiElements\LogInElement.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
