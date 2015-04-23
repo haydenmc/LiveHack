@@ -1,0 +1,25 @@
+﻿@import "../Constants.less";
+
+div.teamPane {
+    position: fixed;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: @length-teampane;
+    box-sizing: border-box;
+    h1 {
+        color: @color-accent;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 48px;
+        margin: 0;
+    }
+    div.content {
+        flex-grow: 1;
+    }
+}

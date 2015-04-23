@@ -1,9 +1,11 @@
 ﻿class UiElement {
     public elementId: string;
+    protected parentElement: HTMLElement;
     protected htmlElement: HTMLElement;
 
-    constructor(id: string) {
+    constructor(id: string, parent?: HTMLElement) {
         this.elementId = id;
+        this.parentElement = parent;
         var template: HTMLScriptElement = <HTMLScriptElement>document.getElementById("template_" + this.elementId);
         if (template == null) {
             throw new Error("Tried to instantiate non-existing template");
@@ -13,8 +15,16 @@
         this.htmlElement = <HTMLElement>fragment.body.firstElementChild;
     }
 
+    public getHtmlElement(): HTMLElement {
+        return this.htmlElement;
+    }
+
     public show(): void {
-        this.htmlElement = <HTMLElement>document.body.appendChild(this.htmlElement);
+        if (this.parentElement != null) {
+            this.htmlElement = <HTMLElement>this.parentElement.appendChild(this.htmlElement);
+        } else {
+            this.htmlElement = <HTMLElement>document.body.appendChild(this.htmlElement);
+        }
     }
 
     public hide(): void {

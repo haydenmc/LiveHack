@@ -1,12 +1,14 @@
 ﻿using LiveHack.Models;
 using LiveHack.Providers;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace LiveHack.Controllers
@@ -14,10 +16,21 @@ namespace LiveHack.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private AuthRepository repo = null;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+        private ApplicationUserManager _userManager;
+
         public AccountController()
         {
-            repo = new AuthRepository();
         }
 
         [Route("Register")]
@@ -28,7 +41,12 @@ namespace LiveHack.Controllers
             {
                 return BadRequest(ModelState);
             }
-            IdentityResult result = await repo.RegisterUser(model);
+            var result = await UserManager.CreateAsync(new LiveHackDb.Models.User()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                DisplayName = model.DisplayName
+            }, model.Password);
             IHttpActionResult errorResult = GetErrorResult(result);
             if (errorResult != null)
             {
@@ -65,15 +83,6 @@ namespace LiveHack.Controllers
             }
 
             return null;
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                repo.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

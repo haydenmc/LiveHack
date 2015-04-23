@@ -10,5 +10,12 @@ namespace LiveHackDb.Models
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext() : base("DefaultConnection") { }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
+        public DbSet<Message> Messages { get; set; }
     }
 }

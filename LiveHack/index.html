@@ -10,6 +10,7 @@
     </noscript>
 
     <!-- Templates galore -->
+    <!-- Log in dialog -->
     <script type="text/template" id="template_LogIn">
         <div class="centerContainer">
             <div class="logInDialog">
@@ -26,10 +27,59 @@
         </div>
     </script>
 
+    <!-- Team Pane -->
+    <script type="text/template" id="template_TeamPane">
+        <div class="teamPane">
+            <div class="details">
+                <h1>Team Name</h1>
+            </div>
+            <ul>
+                <li>Chat</li>
+            </ul>
+            <div class="content">
+                <p>Blah blah blah</p>
+            </div>
+        </div>
+    </script>
+
+    <!-- Content pane -->
+    <script type="text/template" id="template_ContentPane">
+        <div class="contentPane">
+            <h1>Content</h1>
+            <div class="contentChat">
+
+            </div>
+        </div>
+    </script>
+
+    <!-- Browse pane -->
+    <script type="text/template" id="template_BrowsePane">
+        <div class="browsePane">
+            <h1>Browse</h1>
+        </div>
+    </script>
+
+    <!-- Chat -->
+    <script type="text/template" id="template_Chat">
+        <div class="chat">
+            <ul class="messages">
+
+            </ul>
+            <div class="sendPane">
+                <input type="text" class="messageInput" />
+            </div>
+        </div>
+    </script>
+
     <!-- Application Javascript -->
     <script src="Scripts/application.js"></script>
 
     <!-- Stuff that should eventually be bundled -->
     <script src="Scripts/Js/es6-promise-2.0.1.js"></script>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
+
+    <!-- SignalR Hubs -->
+    <script src="signalr/hubs"></script>
 </body>
 </html>

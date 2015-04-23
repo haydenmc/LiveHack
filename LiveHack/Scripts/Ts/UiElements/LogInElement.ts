@@ -1,4 +1,6 @@
-﻿class LogInElement extends UiElement {
+﻿/// <reference path="../UiElement.ts" />
+
+class LogInElement extends UiElement {
     private _processingLogIn: boolean = false;
 
     constructor() {
@@ -34,9 +36,8 @@
         Application.instance.dataSource.authenticate(username, password).then((value) => {
             alert("Success!");
             this._processingLogIn = false;
-            for (var i = 0; i < inputElements.length; i++) {
-                (<HTMLInputElement>inputElements.item(i)).disabled = false;
-            }
+            Application.instance.loggedIn();
+            this.hide();
         }, (error) => {
             alert("Error!");
             this._processingLogIn = false;

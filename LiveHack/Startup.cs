@@ -15,11 +15,12 @@ namespace LiveHack
     {
         public void Configuration(IAppBuilder app)
         {
+            System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
             HttpConfiguration config = new HttpConfiguration();
             ConfigureOAuth(app);
             WebApiConfig.Register(config);
             app.UseWebApi(config);
-            System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            app.MapSignalR();
         }
     }
 }
