@@ -3,6 +3,6 @@
 class ContentPaneElement extends UiElement {
     constructor() {
         super("ContentPane");
-        new ChatElement(<HTMLElement>this.htmlElement.querySelector("div.contentChat")).show();
+        new ChatElement(<HTMLElement>this.htmlElement).show();
     }
 }

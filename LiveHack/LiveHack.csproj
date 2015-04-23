@@ -133,6 +133,7 @@
     <Content Include="Content\Less\UiElements\TeamPane.less" />
     <Content Include="Content\Less\UiElements\ContentPane.less" />
     <Content Include="Content\Less\UiElements\BrowsePane.less" />
+    <Content Include="Content\Less\UiElements\Chat.less" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />

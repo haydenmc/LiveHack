@@ -37,9 +37,10 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 a.button {
+    box-sizing: border-box;
     display:block;
     float: left;
-    padding: 8px;
+    padding: 8px 16px;
     background-color: darken(@color-fg, 70%);
     color: @color-fg;
     text-decoration: none;
@@ -71,3 +72,4 @@ a.button {
 @import "UiElements/TeamPane.less";
 @import "UiElements/ContentPane.less";
 @import "UiElements/BrowsePane.less";
+@import "UiElements/Chat.less";
