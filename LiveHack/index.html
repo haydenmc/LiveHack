@@ -13,15 +13,34 @@
     <!-- Log in dialog -->
     <script type="text/template" id="template_LogIn">
         <div class="centerContainer">
-            <div class="logInDialog">
+            <div class="dialog logInDialog">
                 <h1>Welcome</h1>
                 <form>
                     <input type="email" name="username" placeholder="email address" />
                     <input type="password" name="password" placeholder="password" />
                 </form>
                 <div class="buttons">
-                    <a href="#" class="button">Register</a>
-                    <a href="#" class="button active">Log In</a>
+                    <a href="#" class="button register">Register</a>
+                    <a href="#" class="button active login">Log In</a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Register dialog -->
+    <script type="text/template" id="template_Register">
+        <div class="centerContainer">
+            <div class="dialog registerDialog">
+                <h1>Register</h1>
+                <form>
+                    <input type="email" name="email" placeholder="email address" />
+                    <input type="text" name="displayName" placeholder="display name" />
+                    <input type="password" name="password" placeholder="password" />
+                    <input type="password" name="confirmPassword" placeholder="confirm password" />
+                </form>
+                <div class="buttons">
+                    <a href="#" class="button cancel">Cancel</a>
+                    <a href="#" class="button active register">Register</a>
                 </div>
             </div>
         </div>
@@ -66,7 +85,7 @@
 
             </ul>
             <div class="sendPane">
-                <input type="text" class="messageInput" />
+                <input type="text" class="messageInput" placeholder="type a message" />
             </div>
         </div>
     </script>

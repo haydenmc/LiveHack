@@ -1,4 +1,4 @@
-﻿/// <reference path="../UiElement.ts" />
+﻿/// <reference path="../Application.ts" />
 
 class LogInElement extends UiElement {
     private _processingLogIn: boolean = false;
@@ -7,7 +7,11 @@ class LogInElement extends UiElement {
         super("LogIn");
 
         // Bind events ... 
-        this.htmlElement.querySelector("a.button.active").addEventListener("click",(ev) => {
+        this.htmlElement.querySelector("a.button.register").addEventListener("click", (ev) => {
+            new RegisterElement().show();
+            this.hide();
+        });
+        this.htmlElement.querySelector("a.button.login").addEventListener("click", (ev) => {
             this.processLogIn();
         });
 
@@ -34,7 +38,6 @@ class LogInElement extends UiElement {
         var username = (<HTMLInputElement>this.htmlElement.querySelector("input[type=email]")).value;
         var password = (<HTMLInputElement>this.htmlElement.querySelector("input[type=password]")).value;
         Application.instance.dataSource.authenticate(username, password).then((value) => {
-            alert("Success!");
             this._processingLogIn = false;
             Application.instance.loggedIn();
             this.hide();

@@ -17,6 +17,7 @@
 /// <reference path="UiElements/TeamPaneElement.ts" />
 /// <reference path="UiElements/ContentPaneElement.ts" />
 /// <reference path="UiElements/BrowsePaneElement.ts" />
+/// <reference path="UiElements/RegisterElement.ts" />
 
 class Application {
     public static instance: Application;

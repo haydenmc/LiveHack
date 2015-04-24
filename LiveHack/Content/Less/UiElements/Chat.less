@@ -1,4 +1,6 @@
-﻿div.chat {
+﻿@import "../Constants.less";
+
+div.chat {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -10,5 +12,35 @@
 
     ul.messages {
         flex-grow: 1;
+        list-style-type: none;
+        padding: 0;
+        margin: 16px;
+        
+        li {
+            display: block;
+            padding: 4px 12px;
+            border-left: 4px solid @color-accent;
+            margin: 12px 0;
+
+            div.body {
+                display: block;
+                font-size: 20px;
+            }
+
+            div.sender {
+                display: block;
+                font-size: 14px;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    div.sendPane {
+        margin-bottom: 16px;
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+        }
     }
 }

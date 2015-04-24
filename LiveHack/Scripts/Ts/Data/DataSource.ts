@@ -30,6 +30,16 @@ class DataSource {
         });
     }
 
+    public register(email: string, displayname: string, password: string): Promise<any> {
+        return new Promise<any>((resolve: (result) => void, reject: (error) => void) => {
+            JsonRequest.httpPost<AuthResponse>('/api/Account/Register', { Email: email, DisplayName: displayname, Password: password }).then((success) => {
+                resolve(success);
+            },(error) => {
+                reject(error);
+            });
+        });
+    }
+
     public subscribe(eventName: DataEvent, callback: (arg: any) => void) {
         if (this.callbacks[eventName] == null) {
             this.callbacks[eventName] = new Array<(arg: any) => void>();

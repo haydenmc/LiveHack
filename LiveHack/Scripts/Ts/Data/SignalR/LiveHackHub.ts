@@ -1,4 +1,6 @@
-﻿interface SignalR {
+﻿/// <reference path="../Models/Message.ts" />
+
+interface SignalR {
     liveHackHub: any;
 }
 

@@ -25,7 +25,7 @@ class ChatElement extends UiElement {
     public receivedMessage(arg: any) {
         var message: Message = arg;
         var messageNode = document.createElement("li");
-        messageNode.innerHTML = message.body;
+        messageNode.innerHTML = '<div class="body">' + message.body + '</div><div class="sender">' + message.sender.displayName + '</div>';
         this.htmlElement.querySelector("ul.messages").appendChild(messageNode);
     }
 }

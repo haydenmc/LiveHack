@@ -5,6 +5,9 @@
 LiveHack/Scripts/Application.js
 LiveHack/Content/Style.css
 
+# Publish profiles
+LiveHack/Properties/PublishProfiles/*
+
 # Compiled Typescript
 LiveHack/Scripts/Ts/**/*.js
 

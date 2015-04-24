@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using LiveHackDb.Models;
 using LiveHack.Models;
+using LiveHack.Models.ViewModels;
 
 namespace LiveHack.Hubs
 {
@@ -39,7 +40,7 @@ namespace LiveHack.Hubs
             };
             Db.Messages.Add(message);
             await Db.SaveChangesAsync();
-            await Clients.All.MessageReceived(message);
+            await Clients.All.MessageReceived(MessageViewModel.Convert(message));
         }
     }
 }
