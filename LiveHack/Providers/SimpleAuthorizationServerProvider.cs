@@ -28,7 +28,9 @@ namespace LiveHack.Providers
             _publicClientId = publicClientId;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             context.Validated();
         }

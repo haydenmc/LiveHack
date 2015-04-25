@@ -10,10 +10,12 @@ class RegisterElement extends UiElement {
             this._processing = value;
             var inputElements = this.htmlElement.querySelectorAll("input");
             if (value) {
+                Application.instance.workingIndicator.pushWorkItem();
                 for (var i = 0; i < inputElements.length; i++) {
                     (<HTMLInputElement>inputElements.item(i)).disabled = true;
                 }
             } else {
+                Application.instance.workingIndicator.popWorkItem();
                 for (var i = 0; i < inputElements.length; i++) {
                     (<HTMLInputElement>inputElements.item(i)).disabled = false;
                 }
@@ -25,7 +27,7 @@ class RegisterElement extends UiElement {
 
     constructor() {
         super("Register");
-        this.processing = false;
+        this._processing = false;
 
         // Bind events
         this.htmlElement.querySelector("a.button.cancel").addEventListener("click",(ev) => {
@@ -69,10 +71,12 @@ class RegisterElement extends UiElement {
         Application.instance.dataSource.register(email, displayName, password).then(() => {
             Application.instance.dataSource.authenticate(email, password).then(() => {
                 Application.instance.loggedIn();
+                this.processing = false;
                 this.hide();
             }, () => {
                     alert("Error logging in after completing registration. Please try to log in again.");
                     new LogInElement().show();
+                    this.processing = false;
                     this.hide();
                 });
         }, (error) => {

@@ -15,7 +15,12 @@ namespace LiveHack.Models.ViewModels
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
-        public static UserViewModel Convert(User user)
+        
+    }
+
+    public static partial class ViewModelExtensions
+    {
+        public static UserViewModel ToViewModel(this User user)
         {
             return new UserViewModel()
             {

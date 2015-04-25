@@ -1,4 +1,5 @@
-﻿/// <reference path="Models/AuthResponse.ts" />
+﻿/// <reference path="Models/Team.ts" />
+/// <reference path="Models/AuthResponse.ts" />
 /// <reference path="SignalR/LiveHackHub.ts" />
 /// <reference path="../../Typings/es6-promise.d.ts" />
 /// <reference path="JsonRequest.ts" />
@@ -37,6 +38,16 @@ class DataSource {
             },(error) => {
                 reject(error);
             });
+        });
+    }
+
+    public createTeam(teamName: string): Promise<Team> {
+        return new Promise<any>((resolve: (result) => void, reject: (error) => void) => {
+            JsonRequest.httpPost<Team>('/api/Team', { TeamName: teamName }).then((success) => {
+                resolve(success);
+            },(error) => {
+                    reject(error);
+                });
         });
     }
 

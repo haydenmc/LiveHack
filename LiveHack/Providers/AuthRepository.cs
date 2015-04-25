@@ -1,4 +1,5 @@
 ﻿using LiveHack.Models;
+using LiveHack.Models.BindingModels;
 using LiveHackDb.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

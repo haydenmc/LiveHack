@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using LiveHackDb.Models;
 using LiveHack.Models;
 using LiveHack.Models.ViewModels;
+using LiveHack.Models.BindingModels;
 
 namespace LiveHack.Hubs
 {

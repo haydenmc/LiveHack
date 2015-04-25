@@ -18,6 +18,7 @@
 /// <reference path="UiElements/ContentPaneElement.ts" />
 /// <reference path="UiElements/BrowsePaneElement.ts" />
 /// <reference path="UiElements/RegisterElement.ts" />
+/// <reference path="UiElements/WorkingIndicatorElement.ts" />
 
 class Application {
     public static instance: Application;
@@ -25,6 +26,7 @@ class Application {
     public teamPane: TeamPaneElement;
     public contentPane: ContentPaneElement;
     public browsePane: BrowsePaneElement;
+    public workingIndicator: WorkingIndicator;
 
     constructor() {
         Application.instance = this;
@@ -32,6 +34,10 @@ class Application {
     }
 
     public start(): void {
+        // Initialize working indicator
+        this.workingIndicator = new WorkingIndicator();
+        this.workingIndicator.show();
+
         // show a log-in dialog
         new LogInElement().show();
     }

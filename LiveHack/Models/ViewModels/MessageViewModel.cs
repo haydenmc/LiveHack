@@ -27,7 +27,7 @@ namespace LiveHack.Models.ViewModels
             {
                 MessageId = message.MessageId,
                 Body = message.Body,
-                Sender = UserViewModel.Convert(message.Sender),
+                Sender = message.Sender.ToViewModel(),
                 SentDateTime = message.SentDateTime
             };
         }

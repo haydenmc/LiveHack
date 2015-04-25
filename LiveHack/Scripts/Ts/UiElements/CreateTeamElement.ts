@@ -1,6 +1,7 @@
 ﻿/// <reference path="../Application.ts" />
+/// <reference path="../UiElement.ts" />
 
-class LogInElement extends UiElement {
+class CreateTeam extends UiElement {
     private get processing(): boolean {
         return this._processing;
     }
@@ -26,45 +27,56 @@ class LogInElement extends UiElement {
     private _processing: boolean;
 
     constructor() {
-        super("LogIn");
+        super("CreateTeam");
 
+        // Set not processing (all fields editable)
         this._processing = false;
 
-        // Bind events ... 
-        this.htmlElement.querySelector("a.button.register").addEventListener("click", (ev) => {
-            new RegisterElement().show();
+        // Bind events
+        this.htmlElement.querySelector("a.button.cancel").addEventListener("click", (ev) => {
             this.hide();
         });
-        this.htmlElement.querySelector("a.button.login").addEventListener("click", (ev) => {
-            this.processLogIn();
+
+        this.htmlElement.querySelector("a.button.create").addEventListener("click", (ev) => {
+            this.createTeam();
         });
 
         var inputElements = this.htmlElement.querySelectorAll("input");
         for (var i = 0; i < inputElements.length; i++) {
-            inputElements.item(i).addEventListener('keypress', (e: KeyboardEvent) => {
+            inputElements.item(i).addEventListener('keypress',(e: KeyboardEvent) => {
                 var key = e.which || e.keyCode;
                 if (key === 13) { // 13 is enter
-                    this.processLogIn();
+                    this.createTeam();
                 }
             });
         }
+
+        this.htmlElement.querySelector("form").addEventListener("submit", (ev) => {
+            ev.preventDefault();
+            this.createTeam();
+        });
     }
 
-    public processLogIn(): void {
+    public createTeam(): void {
         if (this.processing) {
             return;
         }
+        // validate
+        var teamName = (<HTMLInputElement>this.htmlElement.querySelector('input[type="text"]')).value;
+        if (teamName.length <= 0) {
+            alert("You must enter a team name.");
+            return;
+        }
+
         this.processing = true;
 
-        var username = (<HTMLInputElement>this.htmlElement.querySelector("input[type=email]")).value;
-        var password = (<HTMLInputElement>this.htmlElement.querySelector("input[type=password]")).value;
-        Application.instance.dataSource.authenticate(username, password).then((value) => {
+        Application.instance.dataSource.createTeam(teamName).then((newTeam) => {
+            // reload the team pane here.
             this.processing = false;
-            Application.instance.loggedIn();
             this.hide();
-        }, (error) => {
-            alert("There was an error logging in: " + error);
-            this.processing = false;
-        });
+        },(error) => {
+                alert("Error creating team: " + error);
+                this.processing = false;
+            });
     }
 }

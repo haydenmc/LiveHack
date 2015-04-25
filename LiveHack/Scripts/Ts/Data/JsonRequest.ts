@@ -36,8 +36,8 @@ class JsonRequest {
 
 			req.onload = function () {
 				// This is called even on 404 etc
-				// so check the status
-				if (req.status == 200) {
+                // so check the status
+                if (req.status >= 200 && req.status <= 299) {
 					if (req.responseText.length > 0) {
 						// Resolve the promise with the response text
 						var result: any = JSON.parse(req.responseText);

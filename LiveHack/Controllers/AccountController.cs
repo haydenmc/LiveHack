@@ -1,4 +1,5 @@
 ﻿using LiveHack.Models;
+using LiveHack.Models.BindingModels;
 using LiveHack.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -13,7 +14,6 @@ using System.Web.Http;
 
 namespace LiveHack.Controllers
 {
-    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         public ApplicationUserManager UserManager

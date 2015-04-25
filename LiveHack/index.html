@@ -52,8 +52,8 @@
             <div class="details">
                 <h1>My Team</h1>
                 <p>Looks like you haven't joined a team yet!</p>
-                <a href="#" class="button active">Create Team</a>
-                <a href="#" class="button">Join Team</a>
+                <a href="#" class="button create">Create Team</a>
+                <a href="#" class="button active join">Join Team</a>
             </div>
             <ul class="teamNav">
                 <li>Chat</li>
@@ -88,6 +88,27 @@
                 <input type="text" class="messageInput" placeholder="type a message" />
             </div>
         </div>
+    </script>
+
+    <!-- Create team dialog -->
+    <script type="text/template" id="template_CreateTeam">
+        <div class="centerContainer darken">
+            <div class="dialog">
+                <h1>Create Team</h1>
+                <form>
+                    <input type="text" name="teamName" placeholder="team name" />
+                </form>
+                <div class="buttons">
+                    <a href="#" class="button cancel">Cancel</a>
+                    <a href="#" class="button active create">Create Team</a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Working indicator -->
+    <script type="text/template" id="template_WorkingIndicator">
+        <div class="workingIndicator closed"></div>
     </script>
 
     <!-- Application Javascript -->
