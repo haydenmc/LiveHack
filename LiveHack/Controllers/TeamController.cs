@@ -73,6 +73,7 @@ namespace LiveHack.Controllers
                 };
                 db.Chats.Add(team);
                 await db.SaveChangesAsync();
+                LiveHackHub.AddToGroup(user, team.Id);
                 return Created("Team/" + team.Id, team.ToViewModel());
             }
         }
@@ -97,6 +98,8 @@ namespace LiveHack.Controllers
                 }
                 targetTeam.Owners.Add(user);
                 await db.SaveChangesAsync();
+                LiveHackHub.AddToGroup(user, targetTeam.Id);
+                LiveHackHub.SendNewChatOwner(targetTeam, user);
                 return Ok(targetTeam.ToViewModel());
             }
         }

@@ -20,6 +20,9 @@
 /// <reference path="UiElements/RegisterElement.ts" />
 /// <reference path="UiElements/WorkingIndicatorElement.ts" />
 
+/* Misc */
+/// <reference path="Misc/ColorHasher.ts" />
+
 class Application {
     public static instance: Application;
     public dataSource: DataSource;

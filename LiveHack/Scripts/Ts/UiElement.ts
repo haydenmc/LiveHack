@@ -30,4 +30,10 @@
     public hide(): void {
         this.htmlElement = <HTMLElement>this.htmlElement.parentElement.removeChild(this.htmlElement);
     }
+
+    public destroy(): void {
+        this.hide();
+        this.htmlElement = null;
+        this.parentElement = null;
+    }
 }

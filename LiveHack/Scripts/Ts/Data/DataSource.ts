@@ -7,7 +7,8 @@
 /// <reference path="../Misc/INotifyPropertyChanged.ts" />
 
 enum DataEvent {
-    NewMessage = 100
+    NewMessage = 100,
+    NewChatOwner = 200
 };
 
 class DataSource implements INotifyPropertyChanged {

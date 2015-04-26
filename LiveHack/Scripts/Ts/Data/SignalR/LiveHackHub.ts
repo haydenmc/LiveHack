@@ -19,6 +19,11 @@ class LiveHackHub {
         this.hub.client.messageReceived = (message: Message) => {
             this.dataSource.fire(DataEvent.NewMessage, message);
         }
+        this.hub.client.newChatOwner = (chatId: string, user: User) => {
+            this.dataSource.fire(DataEvent.NewChatOwner, {
+                chatId: chatId, user: user
+            });
+        };
     }
 
     public connect(): void {

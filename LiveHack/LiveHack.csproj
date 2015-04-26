@@ -223,6 +223,7 @@
     <None Include="Scripts\Ts\UiElements\CreateTeamElement.ts" />
     <None Include="Scripts\Ts\Data\Models\Team.ts" />
     <None Include="Scripts\Ts\Misc\EventHandler.ts" />
+    <None Include="Scripts\Ts\Misc\ColorHasher.ts" />
     <TypeScriptCompile Include="Scripts\Ts\Misc\INotifyPropertyChanged.ts" />
     <Content Include="Scripts\Ts\UiElements\JoinTeamElement.ts" />
     <TypeScriptCompile Include="Scripts\Ts\UiElements\WorkingIndicatorElement.ts" />
