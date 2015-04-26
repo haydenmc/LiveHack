@@ -31,7 +31,6 @@ class JsonRequest {
 			}
 
             // Make sure we request json
-            req.setRequestHeader("Content-Type", "application/json");
             req.setRequestHeader("Accept", "application/json");
 
 			if (typeof authToken !== 'undefined') {
