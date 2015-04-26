@@ -163,6 +163,7 @@
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthRepository.cs" />
+    <Compile Include="Providers\MyUserIdProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Random.cs" />
@@ -221,6 +222,9 @@
     <None Include="Scripts\Ts\Data\Models\User.ts" />
     <None Include="Scripts\Ts\UiElements\CreateTeamElement.ts" />
     <None Include="Scripts\Ts\Data\Models\Team.ts" />
+    <None Include="Scripts\Ts\Misc\EventHandler.ts" />
+    <TypeScriptCompile Include="Scripts\Ts\Misc\INotifyPropertyChanged.ts" />
+    <Content Include="Scripts\Ts\UiElements\JoinTeamElement.ts" />
     <TypeScriptCompile Include="Scripts\Ts\UiElements\WorkingIndicatorElement.ts" />
     <TypeScriptCompile Include="Scripts\Typings\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\jquery.d.ts" />

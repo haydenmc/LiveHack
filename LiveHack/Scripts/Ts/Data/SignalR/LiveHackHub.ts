@@ -17,7 +17,7 @@ class LiveHackHub {
             alert("Hello from server.");
         };
         this.hub.client.messageReceived = (message: Message) => {
-            this.dataSource.fireEvent(DataEvent.NewMessage, message);
+            this.dataSource.fire(DataEvent.NewMessage, message);
         }
     }
 
@@ -27,7 +27,7 @@ class LiveHackHub {
         });
     }
 
-    public sendMessage(message: { body: string }) {
+    public sendMessage(message: { chatId: string; body: string }) {
         this.hub.server.sendMessage(message);
     }
 }

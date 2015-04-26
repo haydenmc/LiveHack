@@ -50,16 +50,25 @@
     <script type="text/template" id="template_TeamPane">
         <div class="teamPane">
             <div class="details">
-                <h1>My Team</h1>
-                <p>Looks like you haven't joined a team yet!</p>
-                <a href="#" class="button create">Create Team</a>
-                <a href="#" class="button active join">Join Team</a>
+                <h1> ... </h1>
+                <div class="noTeam" style="display: none;">
+                    <p>Looks like you haven't joined a team yet!</p>
+                    <div class="joinButtons">
+                        <a href="#" class="button create">Create Team</a>
+                        <a href="#" class="button active join">Join Team</a>
+                    </div>
+                </div>
+                <div class="hasTeam">
+                    <h3><span class="accessCode">...</span> access code</h3>
+                    <h2>Members</h2>
+                    <ul class="members"></ul>
+                </div>
             </div>
             <ul class="teamNav">
                 <li>Chat</li>
             </ul>
             <div class="teamContent">
-                <p>Blah blah blah</p>
+
             </div>
         </div>
     </script>
@@ -101,6 +110,22 @@
                 <div class="buttons">
                     <a href="#" class="button cancel">Cancel</a>
                     <a href="#" class="button active create">Create Team</a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Join team dialog -->
+    <script type="text/template" id="template_JoinTeam">
+        <div class="centerContainer darken">
+            <div class="dialog">
+                <h1>Join Team</h1>
+                <form>
+                    <input type="text" name="accessCode" placeholder="access code" />
+                </form>
+                <div class="buttons">
+                    <a href="#" class="button cancel">Cancel</a>
+                    <a href="#" class="button active join">Join Team</a>
                 </div>
             </div>
         </div>

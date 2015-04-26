@@ -24,6 +24,7 @@ namespace LiveHack.Models.ViewModels
                 Description = team.Description,
                 AccessCode = team.AccessCode,
                 Owners = team.Owners.ToList().Select(o => o.ToViewModel()).ToList(),
+                Users = team.Users.ToList().Select(u => u.ToViewModel()).ToList(),
                 DateTimeCreated = team.DateTimeCreated
             };
         }

@@ -17,8 +17,11 @@ namespace LiveHack.Models.ViewModels
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("users")]
+        [JsonProperty("owners")]
         public virtual ICollection<UserViewModel> Owners { get; set; }
+
+        [JsonProperty("users")]
+        public virtual ICollection<UserViewModel> Users { get; set; }
 
         [JsonProperty("dateTimeCreated")]
         public DateTimeOffset DateTimeCreated { get; set; }

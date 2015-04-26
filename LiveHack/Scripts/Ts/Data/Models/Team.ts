@@ -6,5 +6,6 @@ class Team {
     public description: string;
     public accessCode: string;
     public owners: Array<User>;
+    public users: Array<User>;
     public dateTimeCreated: string;
 }

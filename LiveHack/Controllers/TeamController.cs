@@ -9,14 +9,17 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using LiveHack.Hubs;
 
 namespace LiveHack.Controllers
 {
-    public class TeamController : ApiController
+    [RoutePrefix("api/Team")]
+    public class TeamController : ApiControllerWithHub<LiveHackHub>
     {
-        public async Task<IHttpActionResult> PostCreate(TeamBindingModel inputTeam)
+        [Authorize]
+        [HttpGet]
+        public IHttpActionResult Get()
         {
-            
             using (var db = new ApplicationDbContext())
             {
                 var userId = IdentityExtensions.GetUserId(RequestContext.Principal.Identity);
@@ -25,7 +28,28 @@ namespace LiveHack.Controllers
                 {
                     return Unauthorized();
                 }
-                if (db.Teams.SingleOrDefault(t => t.Name.ToLower() == inputTeam.TeamName.ToLower()) != null)
+                var team = user.ChatsOwned.OfType<Team>().FirstOrDefault();
+                if (team == null)
+                {
+                    return NotFound();
+                }
+                return Ok(team.ToViewModel());
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IHttpActionResult> PostCreate(TeamBindingModel inputTeam)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var userId = IdentityExtensions.GetUserId(RequestContext.Principal.Identity);
+                var user = db.Users.SingleOrDefault(u => u.Id == userId);
+                if (user == null)
+                {
+                    return Unauthorized();
+                }
+                if (db.Chats.OfType<Team>().SingleOrDefault(t => t.Name.ToLower() == inputTeam.TeamName.ToLower()) != null)
                 {
                     return BadRequest("A team with this name already exists.");
                 }
@@ -34,7 +58,7 @@ namespace LiveHack.Controllers
                 {
                     randomAccessCode = Utils.Random.GetRandomString(5);
                 }
-                while (db.Teams.SingleOrDefault(t => t.AccessCode == randomAccessCode) != null);
+                while (db.Chats.OfType<Team>().SingleOrDefault(t => t.AccessCode == randomAccessCode) != null);
 
                 var team = new Team()
                 {
@@ -44,11 +68,36 @@ namespace LiveHack.Controllers
                     AccessCode = LiveHack.Utils.Random.GetRandomString(5),
                     DateTimeCreated = DateTimeOffset.Now,
                     Messages = new List<Message>(),
+                    Users = new List<User>(),
                     Owners = new List<User>() { user }
                 };
-                db.Teams.Add(team);
+                db.Chats.Add(team);
                 await db.SaveChangesAsync();
                 return Created("Team/" + team.Id, team.ToViewModel());
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("{accessCode:length(5)}/Join")]
+        public async Task<IHttpActionResult> PostJoin(string accessCode)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var userId = IdentityExtensions.GetUserId(RequestContext.Principal.Identity);
+                var user = db.Users.SingleOrDefault(u => u.Id == userId);
+                if (user == null)
+                {
+                    return Unauthorized();
+                }
+                var targetTeam = db.Chats.OfType<Team>().SingleOrDefault(r => r.AccessCode == accessCode);
+                if (targetTeam == null)
+                {
+                    return NotFound();
+                }
+                targetTeam.Owners.Add(user);
+                await db.SaveChangesAsync();
+                return Ok(targetTeam.ToViewModel());
             }
         }
     }

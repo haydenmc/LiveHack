@@ -12,11 +12,17 @@ namespace LiveHackDb.Models
     {
         [JsonProperty("messageId")]
         public Guid MessageId { get; set; }
+
+        [JsonProperty("chat")]
+        public virtual Chat Chat { get; set; }
+
         [JsonProperty("sender")]
         public User Sender { get; set; }
+
         [JsonProperty("body")]
         [StringLength(4096)]
         public string Body { get; set; }
+
         [JsonProperty("sentDateTime")]
         public DateTimeOffset SentDateTime { get; set; }
     }

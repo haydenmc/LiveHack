@@ -50,6 +50,28 @@ class Application {
         this.contentPane.show();
         this.browsePane = new BrowsePaneElement(this.contentPane);
         this.browsePane.show();
+
+        // Fetch user info
+        this.workingIndicator.pushWorkItem();
+        this.dataSource.getUser().then((user) => {
+            this.dataSource.user = user;
+            if (user.teamInfo != null) {
+                this.workingIndicator.pushWorkItem();
+                this.dataSource.getTeam().then((team) => {
+                    this.dataSource.team = team;
+                    this.workingIndicator.popWorkItem();
+                },(error) => {
+                        alert("Error fetching user team: " + error);
+                        this.workingIndicator.popWorkItem();
+                    });
+            } else {
+                this.dataSource.team = null;
+            }
+            this.workingIndicator.popWorkItem();
+        },(error) => {
+                alert("Error fetching user data: " + error);
+                this.workingIndicator.popWorkItem();
+            });
     }
 }
 

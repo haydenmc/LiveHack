@@ -15,17 +15,20 @@ namespace LiveHack.Models.ViewModels
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
-        
+        [JsonProperty("teamInfo")]
+        public dynamic TeamInfo { get; set; }
     }
 
     public static partial class ViewModelExtensions
     {
         public static UserViewModel ToViewModel(this User user)
         {
+            var team = user.ChatsOwned.OfType<Team>().FirstOrDefault();
             return new UserViewModel()
             {
                 Id = user.Id,
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                TeamInfo = team == null ? null : new { id = team.Id, name = team.Name }
             };
         }
     }

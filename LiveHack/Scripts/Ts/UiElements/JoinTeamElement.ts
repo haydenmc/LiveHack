@@ -1,7 +1,7 @@
 ﻿/// <reference path="../Application.ts" />
 /// <reference path="../UiElement.ts" />
 
-class CreateTeam extends UiElement {
+class JoinTeam extends UiElement {
     private get processing(): boolean {
         return this._processing;
     }
@@ -27,7 +27,7 @@ class CreateTeam extends UiElement {
     private _processing: boolean;
 
     constructor() {
-        super("CreateTeam");
+        super("JoinTeam");
 
         // Set not processing (all fields editable)
         this._processing = false;
@@ -37,8 +37,8 @@ class CreateTeam extends UiElement {
             this.hide();
         });
 
-        this.htmlElement.querySelector("a.button.create").addEventListener("click", (ev) => {
-            this.createTeam();
+        this.htmlElement.querySelector("a.button.join").addEventListener("click",(ev) => {
+            this.joinTeam();
         });
 
         var inputElements = this.htmlElement.querySelectorAll("input");
@@ -46,36 +46,36 @@ class CreateTeam extends UiElement {
             inputElements.item(i).addEventListener('keypress', (e: KeyboardEvent) => {
                 var key = e.which || e.keyCode;
                 if (key === 13) { // 13 is enter
-                    this.createTeam();
+                    this.joinTeam();
                 }
             });
         }
 
         this.htmlElement.querySelector("form").addEventListener("submit", (ev) => {
             ev.preventDefault();
-            this.createTeam();
+            this.joinTeam();
         });
     }
 
-    public createTeam(): void {
+    public joinTeam(): void {
         if (this.processing) {
             return;
         }
         // validate
-        var teamName = (<HTMLInputElement>this.htmlElement.querySelector('input[type="text"]')).value;
-        if (teamName.length <= 0) {
-            alert("You must enter a team name.");
+        var accessCode = (<HTMLInputElement>this.htmlElement.querySelector('input[type="text"]')).value;
+        if (accessCode.length <= 0) {
+            alert("You must enter an access code.");
             return;
         }
 
         this.processing = true;
 
-        Application.instance.dataSource.createTeam(teamName).then((newTeam) => {
+        Application.instance.dataSource.joinTeam(accessCode).then((newTeam) => {
             Application.instance.dataSource.team = newTeam;
             this.processing = false;
             this.hide();
         },(error) => {
-                alert("Error creating team: " + error);
+                alert("Error joining team: " + error);
                 this.processing = false;
             });
     }

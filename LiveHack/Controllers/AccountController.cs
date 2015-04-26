@@ -1,6 +1,8 @@
 ﻿using LiveHack.Models;
 using LiveHack.Models.BindingModels;
+using LiveHack.Models.ViewModels;
 using LiveHack.Providers;
+using LiveHackDb.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -33,9 +35,24 @@ namespace LiveHack.Controllers
         {
         }
 
-        [Route("Register")]
+        [Authorize]
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var userId = IdentityExtensions.GetUserId(RequestContext.Principal.Identity);
+                var user = db.Users.SingleOrDefault(u => u.Id == userId);
+                if (user == null)
+                {
+                    return Unauthorized();
+                }
+                return Ok(user.ToViewModel());
+            }
+        }
+
         [HttpPost]
-        public async Task<IHttpActionResult> PostRegister(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Post(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
             {

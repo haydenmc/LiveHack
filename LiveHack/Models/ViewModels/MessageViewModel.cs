@@ -12,6 +12,9 @@ namespace LiveHack.Models.ViewModels
         [JsonProperty("messageId")]
         public Guid MessageId { get; set; }
 
+        [JsonProperty("chatId")]
+        public Guid? ChatId { get; set; }
+
         [JsonProperty("body")]
         public string Body { get; set; }
 
@@ -20,12 +23,16 @@ namespace LiveHack.Models.ViewModels
 
         [JsonProperty("sentDateTime")]
         public DateTimeOffset SentDateTime { get; set; }
+    }
 
-        public static MessageViewModel Convert(Message message)
+    public static partial class ViewModelExtensions
+    {
+        public static MessageViewModel ToViewModel(this Message message)
         {
             return new MessageViewModel()
             {
                 MessageId = message.MessageId,
+                ChatId = message.Chat == null ? null : (Guid?)message.Chat.Id,
                 Body = message.Body,
                 Sender = message.Sender.ToViewModel(),
                 SentDateTime = message.SentDateTime

@@ -65,23 +65,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201504220301391_Users.cs" />
-    <Compile Include="Migrations\201504220301391_Users.Designer.cs">
-      <DependentUpon>201504220301391_Users.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504230031138_Messages.cs" />
-    <Compile Include="Migrations\201504230031138_Messages.Designer.cs">
-      <DependentUpon>201504230031138_Messages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504241918362_ChatsandTeams.cs" />
-    <Compile Include="Migrations\201504241918362_ChatsandTeams.Designer.cs">
-      <DependentUpon>201504241918362_ChatsandTeams.cs</DependentUpon>
+    <Compile Include="Migrations\201504260738338_Initial.cs" />
+    <Compile Include="Migrations\201504260738338_Initial.Designer.cs">
+      <DependentUpon>201504260738338_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\Technology.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,14 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504220301391_Users.resx">
-      <DependentUpon>201504220301391_Users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504230031138_Messages.resx">
-      <DependentUpon>201504230031138_Messages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504241918362_ChatsandTeams.resx">
-      <DependentUpon>201504241918362_ChatsandTeams.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504260738338_Initial.resx">
+      <DependentUpon>201504260738338_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,7 +18,7 @@ class ChatElement extends UiElement {
     }
 
     public sendMessage(body: string) {
-        var message = { body: body };
+        var message = { chatId: null, body: body };
         Application.instance.dataSource.liveHackHub.sendMessage(message);
     }
 
