@@ -18,18 +18,18 @@ class ChatElement extends UiElement {
                 (<HTMLInputElement>this.htmlElement.querySelector("input.messageInput")).value = "";
             }
         });
+
+        // Fetch chat history
+        Application.instance.dataSource.getChatMessages(this.chatId).then((messages) => {
+            for (var i = 0; i < messages.length; i++) {
+                this.insertMessage(messages[i]);
+            }
+        },(error) => {
+                alert("Error fetching chat history: " + error);
+            });
     }
 
-    public sendMessage(body: string) {
-        var message = { chatId: this.chatId, body: body };
-        Application.instance.dataSource.liveHackHub.sendMessage(message);
-    }
-
-    public receivedMessage(arg: any) {
-        var message: Message = arg;
-        if (message.chatId != this.chatId) {
-            return;
-        }
+    public insertMessage(message: Message) {
         // Are we scrolled to the bottom?
         var messageList = <HTMLUListElement>this.htmlElement.querySelector("ul.messages");
         var scrollToBottom = false;
@@ -43,6 +43,19 @@ class ChatElement extends UiElement {
         if (scrollToBottom) {
             messageList.scrollTop = messageList.scrollHeight - messageList.clientHeight;
         }
+    }
+
+    public sendMessage(body: string) {
+        var message = { chatId: this.chatId, body: body };
+        Application.instance.dataSource.liveHackHub.sendMessage(message);
+    }
+
+    public receivedMessage(arg: any) {
+        var message: Message = arg;
+        if (message.chatId != this.chatId) {
+            return;
+        }
+        this.insertMessage(message);
     }
 
     public destroy() {

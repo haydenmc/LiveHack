@@ -114,6 +114,14 @@ class DataSource implements INotifyPropertyChanged {
         });
     }
 
+    public getChatMessages(chatId?: string): Promise<Array<Message>> {
+        var chatUrl = "";
+        if (typeof chatId !== 'undefined') {
+            chatUrl = "/" + chatId;
+        }
+        return JsonRequest.httpGet<Array<Message>>('/api/Chat' + chatUrl + '/Messages', this._authInfo.access_token);
+    }
+
     public subscribe(eventName: DataEvent, callback: (arg: any) => void) {
         if (this.callbacks[eventName] == null) {
             this.callbacks[eventName] = new EventHandler<any>();

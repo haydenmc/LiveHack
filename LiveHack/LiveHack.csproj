@@ -153,6 +153,7 @@
     <Compile Include="Attributes\NoCacheFilterAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllerWithHub.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Hubs\LiveHackHub.cs" />
     <Compile Include="Models\BindingModels\MessageBindingModel.cs" />
