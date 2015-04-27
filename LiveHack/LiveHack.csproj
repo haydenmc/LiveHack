@@ -132,11 +132,11 @@
     <Content Include="index.html" />
     <Content Include="Scripts\application.js" />
     <Content Include="Content\Less\UiElements\TeamPane.less" />
-    <Content Include="Content\Less\UiElements\ContentPane.less" />
-    <Content Include="Content\Less\UiElements\BrowsePane.less" />
+    <Content Include="Content\Less\UiElements\ContentBrowser.less" />
     <Content Include="Content\Less\UiElements\Chat.less" />
     <Content Include="Content\Less\UiElements\WorkingIndicator.less" />
     <Content Include="Content\Less\Functions.less" />
+    <Content Include="Content\Less\UiElements\Announcements.less" />
     <None Include="Properties\PublishProfiles\livehack.pubxml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
@@ -216,8 +216,7 @@
     <None Include="Scripts\Ts\UiElements\LogInElement.ts" />
     <None Include="Scripts\Ts\Data\SignalR\LiveHackHub.ts" />
     <None Include="Scripts\Ts\UiElements\TeamPaneElement.ts" />
-    <None Include="Scripts\Ts\UiElements\ContentPaneElement.ts" />
-    <None Include="Scripts\Ts\UiElements\BrowsePaneElement.ts" />
+    <None Include="Scripts\Ts\UiElements\ContentBrowserElement.ts" />
     <None Include="Scripts\Ts\Data\Models\Message.ts" />
     <None Include="Scripts\Ts\UiElements\ChatElement.ts" />
     <None Include="Scripts\Ts\UiElements\RegisterElement.ts" />
@@ -226,8 +225,10 @@
     <None Include="Scripts\Ts\Data\Models\Team.ts" />
     <None Include="Scripts\Ts\Misc\EventHandler.ts" />
     <None Include="Scripts\Ts\Misc\ColorHasher.ts" />
+    <None Include="Scripts\Ts\Data\ObservableArray.ts" />
     <TypeScriptCompile Include="Scripts\Ts\Misc\INotifyPropertyChanged.ts" />
     <Content Include="Scripts\Ts\UiElements\JoinTeamElement.ts" />
+    <None Include="Scripts\Ts\UiElements\AnnouncementsElement.ts" />
     <TypeScriptCompile Include="Scripts\Ts\UiElements\WorkingIndicatorElement.ts" />
     <TypeScriptCompile Include="Scripts\Typings\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\jquery.d.ts" />

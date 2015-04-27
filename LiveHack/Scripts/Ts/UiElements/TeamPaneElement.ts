@@ -61,7 +61,7 @@ class TeamPaneElement extends UiElement {
         if (typeof this.teamChat !== 'undefined') {
             this.teamChat.destroy();
         }
-        this.teamChat = new ChatElement(<HTMLElement>this.htmlElement.querySelector(".teamChat"), newTeam.id);
+        this.teamChat = new ChatElement(<HTMLElement>this.htmlElement.querySelector(".teamChat"), newTeam.name + " Chat", newTeam.id);
         this.teamChat.show();
     }
 

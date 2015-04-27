@@ -3,12 +3,21 @@
 class ChatElement extends UiElement {
     public chatId: string;
 
+    private get elementMessageList(): HTMLUListElement {
+        return <HTMLUListElement>this.htmlElement.querySelector("ul.messages");
+    }
+
     private callbackReceivedMessage = (msg) => {
         this.receivedMessage(msg);
     };
 
-    constructor(parent: HTMLElement, chatId?: string) {
+    constructor(parent: HTMLElement, title?: string, chatId?: string) {
         super("Chat", parent);
+        if (typeof title !== 'undefined') {
+            this.title = title;
+        } else {
+            this.title = "Chat";
+        }
         this.chatId = chatId;
         Application.instance.dataSource.subscribe(DataEvent.NewMessage, this.callbackReceivedMessage);
         this.htmlElement.querySelector("input.messageInput").addEventListener('keypress',(e: KeyboardEvent) => {
@@ -56,6 +65,12 @@ class ChatElement extends UiElement {
             return;
         }
         this.insertMessage(message);
+    }
+
+    public show() {
+        super.show();
+        // Scroll to bottom
+        this.elementMessageList.scrollTop = this.elementMessageList.scrollHeight - this.elementMessageList.clientHeight;
     }
 
     public destroy() {

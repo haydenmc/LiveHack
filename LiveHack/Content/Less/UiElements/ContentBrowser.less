@@ -1,0 +1,47 @@
+﻿@import "../Constants.less";
+div.contentBrowser {
+    position: fixed;
+    left: @length-teampane;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    
+    div.contentPane {
+        position: absolute;
+        right: @length-browsepane;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    div.browsePane {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: @length-browsepane;
+
+        h1 {
+            text-transform: uppercase;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            li {
+                cursor: pointer;
+                display: block;
+                font-weight: 300;
+                font-size: 22px;
+                padding: 4px 0 4px 16px;
+                margin: 4px 0;
+
+                &.selected {
+                    border-left: 6px solid @color-accent;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}

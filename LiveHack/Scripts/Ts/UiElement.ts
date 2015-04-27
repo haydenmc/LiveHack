@@ -1,5 +1,6 @@
 ﻿class UiElement {
     public elementId: string;
+    public title: string;
     protected parentElement: HTMLElement;
     protected htmlElement: HTMLElement;
 

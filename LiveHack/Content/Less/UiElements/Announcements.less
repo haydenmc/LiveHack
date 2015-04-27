@@ -1,0 +1,27 @@
+﻿@import "../Constants.less";
+
+ul.announcements {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 24px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    li {
+        display: block; 
+        color: @color-fg;
+        h1 {
+            font-weight: 900;
+            margin: 16px 0 0 0;
+            padding: 0;
+            color: @color-accent;
+        }
+    }
+}

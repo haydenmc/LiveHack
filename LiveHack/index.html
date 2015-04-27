@@ -65,7 +65,7 @@
                 </div>
             </div>
             <ul class="teamNav">
-                <li>Chat</li>
+                <li>Team Chat</li>
             </ul>
             <div class="teamContent">
                 <div class="teamChat">
@@ -76,17 +76,23 @@
     </script>
 
     <!-- Content pane -->
-    <script type="text/template" id="template_ContentPane">
-        <div class="contentPane">
+    <script type="text/template" id="template_ContentBrowser">
+        <div class="contentBrowser">
+            <div class="contentPane">
 
+            </div>
+            <div class="browsePane">
+                <h1>Hackathon</h1>
+                <ul class="globalElements">
+
+                </ul>
+            </div>
         </div>
     </script>
 
     <!-- Browse pane -->
     <script type="text/template" id="template_BrowsePane">
-        <div class="browsePane">
-            <h1>Browse</h1>
-        </div>
+        
     </script>
 
     <!-- Chat -->
@@ -99,6 +105,20 @@
                 <input type="text" class="messageInput" placeholder="type a message" />
             </div>
         </div>
+    </script>
+
+    <!-- Announcements -->
+    <script type="text/template" id="template_Announcements">
+        <ul class="announcements">
+            <li>
+                <h1>Test Announcement</h1>
+                <p>This is a test announcement.</p>
+            </li>
+            <li>
+                <h1>Another Test Announcement</h1>
+                <p>This is another test announcement.</p>
+            </li>
+        </ul>
     </script>
 
     <!-- Create team dialog -->

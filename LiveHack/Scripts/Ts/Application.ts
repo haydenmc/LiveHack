@@ -8,17 +8,21 @@
 /// <reference path="Data/JsonRequest.ts" />
 /// <reference path="Data/DataSource.ts" />
 /// <reference path="Data/SignalR/LiveHackHub.ts" />
+/// <reference path="Data/ObservableArray.ts" />
 
 /* Models */
 /// <reference path="Data/Models/AuthResponse.ts" />
+/// <reference path="Data/Models/Message.ts" />
+/// <reference path="Data/Models/Team.ts" />
+/// <reference path="Data/Models/User.ts" />
 
 /* UI elements */
 /// <reference path="UiElements/LogInElement.ts" />
 /// <reference path="UiElements/TeamPaneElement.ts" />
-/// <reference path="UiElements/ContentPaneElement.ts" />
-/// <reference path="UiElements/BrowsePaneElement.ts" />
+/// <reference path="UiElements/ContentBrowserElement.ts" />
 /// <reference path="UiElements/RegisterElement.ts" />
 /// <reference path="UiElements/WorkingIndicatorElement.ts" />
+/// <reference path="UiElements/AnnouncementsElement.ts" />
 
 /* Misc */
 /// <reference path="Misc/ColorHasher.ts" />
@@ -27,8 +31,7 @@ class Application {
     public static instance: Application;
     public dataSource: DataSource;
     public teamPane: TeamPaneElement;
-    public contentPane: ContentPaneElement;
-    public browsePane: BrowsePaneElement;
+    public contentBrowser: ContentBrowserElement;
     public workingIndicator: WorkingIndicator;
 
     constructor() {
@@ -49,10 +52,8 @@ class Application {
         this.dataSource.liveHackHub.connect();
         this.teamPane = new TeamPaneElement();
         this.teamPane.show();
-        this.contentPane = new ContentPaneElement();
-        this.contentPane.show();
-        this.browsePane = new BrowsePaneElement(this.contentPane);
-        this.browsePane.show();
+        this.contentBrowser = new ContentBrowserElement();
+        this.contentBrowser.show();
 
         // Fetch user info
         this.workingIndicator.pushWorkItem();
