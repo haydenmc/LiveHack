@@ -13,6 +13,8 @@ namespace LiveHackDb.Models
     public class User : IdentityUser
     {
         public string DisplayName { get; set; }
+        public bool IsOrganizer { get; set; }
+        public bool IsSponsor { get; set; }
 
         public virtual ICollection<Chat> ChatsOwned { get; set; }
 

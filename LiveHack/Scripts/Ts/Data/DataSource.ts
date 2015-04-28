@@ -1,4 +1,5 @@
-﻿/// <reference path="Models/Team.ts" />
+﻿/// <reference path="Models/Announcement.ts" />
+/// <reference path="Models/Team.ts" />
 /// <reference path="Models/AuthResponse.ts" />
 /// <reference path="SignalR/LiveHackHub.ts" />
 /// <reference path="../../Typings/es6-promise.d.ts" />
@@ -120,6 +121,10 @@ class DataSource implements INotifyPropertyChanged {
             chatUrl = "/" + chatId;
         }
         return JsonRequest.httpGet<Array<Message>>('/api/Chat' + chatUrl + '/Messages', this._authInfo.access_token);
+    }
+
+    public getAnnouncements(): Promise<Array<Announcement>> {
+        return JsonRequest.httpGet<Array<Announcement>>('/api/Announcement', this._authInfo.access_token);
     }
 
     public subscribe(eventName: DataEvent, callback: (arg: any) => void) {

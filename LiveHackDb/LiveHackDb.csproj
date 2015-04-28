@@ -69,7 +69,12 @@
     <Compile Include="Migrations\201504260738338_Initial.Designer.cs">
       <DependentUpon>201504260738338_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504280154344_Announcements.cs" />
+    <Compile Include="Migrations\201504280154344_Announcements.Designer.cs">
+      <DependentUpon>201504280154344_Announcements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Message.cs" />
@@ -86,6 +91,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201504260738338_Initial.resx">
       <DependentUpon>201504260738338_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504280154344_Announcements.resx">
+      <DependentUpon>201504280154344_Announcements.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

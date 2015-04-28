@@ -152,13 +152,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Attributes\NoCacheFilterAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\ApiControllerWithHub.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Hubs\LiveHackHub.cs" />
+    <Compile Include="Models\BindingModels\AnnouncementBindingModel.cs" />
     <Compile Include="Models\BindingModels\MessageBindingModel.cs" />
     <Compile Include="Models\BindingModels\RegisterBindingModel.cs" />
     <Compile Include="Models\BindingModels\TeamBindingModel.cs" />
+    <Compile Include="Models\ViewModels\AnnouncementViewModel.cs" />
     <Compile Include="Models\ViewModels\ChatViewModel.cs" />
     <Compile Include="Models\ViewModels\MessageViewModel.cs" />
     <Compile Include="Models\ViewModels\TeamViewModel.cs" />
@@ -226,6 +229,7 @@
     <None Include="Scripts\Ts\Misc\EventHandler.ts" />
     <None Include="Scripts\Ts\Misc\ColorHasher.ts" />
     <None Include="Scripts\Ts\Data\ObservableArray.ts" />
+    <None Include="Scripts\Ts\Data\Models\Announcement.ts" />
     <TypeScriptCompile Include="Scripts\Ts\Misc\INotifyPropertyChanged.ts" />
     <Content Include="Scripts\Ts\UiElements\JoinTeamElement.ts" />
     <None Include="Scripts\Ts\UiElements\AnnouncementsElement.ts" />

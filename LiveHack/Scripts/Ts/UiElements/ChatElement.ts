@@ -29,12 +29,15 @@ class ChatElement extends UiElement {
         });
 
         // Fetch chat history
+        Application.instance.workingIndicator.pushWorkItem();
         Application.instance.dataSource.getChatMessages(this.chatId).then((messages) => {
             for (var i = 0; i < messages.length; i++) {
                 this.insertMessage(messages[i]);
             }
+            Application.instance.workingIndicator.popWorkItem();
         },(error) => {
                 alert("Error fetching chat history: " + error);
+                Application.instance.workingIndicator.popWorkItem();
             });
     }
 

@@ -40,5 +40,6 @@ namespace LiveHackDb.Models
 
         public DbSet<Message> Messages { get; set; }
         public DbSet<Chat> Chats { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
     }
 }
