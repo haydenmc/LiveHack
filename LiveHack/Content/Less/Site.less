@@ -19,7 +19,7 @@ input[type=text], input[type=email], input[type=password] {
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 2.5px solid darken(@color-fg, 10%);
+    border-bottom: 2.5px solid fade(@color-fg, 90%);
     margin: 8px 0;
     background-color: transparent;
 
@@ -30,18 +30,18 @@ input[type=text], input[type=email], input[type=password] {
 
 /* Input placeholders */
 *::-webkit-input-placeholder { /* WebKit browsers */
-    color: darken(@color-fg, 50%);
+    color: fade(@color-fg, 50%);
 }
 *:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: darken(@color-fg, 50%);
+    color: fade(@color-fg, 50%);
     opacity:  1;
 }
 *::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: darken(@color-fg, 50%);
+    color: fade(@color-fg, 50%);
     opacity:  1;
 }
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: darken(@color-fg, 50%);
+    color: fade(@color-fg, 50%);
 }
 
 a.button {
@@ -49,7 +49,7 @@ a.button {
     display:block;
     float: left;
     padding: 8px 16px;
-    background-color: darken(@color-fg, 70%);
+    background-color: fade(@color-fg, 30%);
     color: @color-fg;
     text-decoration: none;
     text-transform: uppercase;
@@ -57,11 +57,11 @@ a.button {
     text-align: center;
 
     &:hover {
-        background-color: darken(@color-fg, 50%);
+        background-color: fade(@color-fg, 50%);
     }
 
     &:active {
-        background-color: darken(@color-fg, 80%);
+        background-color: fade(@color-fg, 10%);
     }
 
     &.active {

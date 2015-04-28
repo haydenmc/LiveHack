@@ -9,7 +9,8 @@
 
 enum DataEvent {
     NewMessage = 100,
-    NewChatOwner = 200
+    NewChatOwner = 200,
+    NewAnnouncement = 300
 };
 
 class DataSource implements INotifyPropertyChanged {

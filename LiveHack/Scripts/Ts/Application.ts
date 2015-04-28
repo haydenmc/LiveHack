@@ -1,5 +1,6 @@
 ﻿/* External typings */
 /// <reference path="../typings/es6-promise.d.ts" />
+/// <reference path="../typings/moment.d.ts" />
 
 /* Core references */
 /// <reference path="UiElement.ts" />

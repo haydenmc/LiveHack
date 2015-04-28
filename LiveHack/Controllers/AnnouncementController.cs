@@ -9,12 +9,14 @@ using System.Net.Http;
 using System.Web.Http;
 using LiveHack.Models.BindingModels;
 using System.Threading.Tasks;
+using LiveHack.Controllers;
+using LiveHack.Hubs;
 
 namespace LiveHack.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Announcement")]
-    public class AnnouncementController : ApiController
+    public class AnnouncementController : ApiControllerWithHub<LiveHackHub>
     {
         [Route("")]
         [HttpGet]
@@ -64,6 +66,7 @@ namespace LiveHack.Controllers
                 };
                 db.Announcements.Add(announcement);
                 await db.SaveChangesAsync();
+                LiveHackHub.SendNewAnnouncement(announcement);
                 return Created("/api/Announcement/" + announcement.AnnouncementId, announcement.ToViewModel());
             }
         }

@@ -17,6 +17,9 @@ namespace LiveHack.Models.ViewModels
 
         [JsonProperty("teamInfo")]
         public dynamic TeamInfo { get; set; }
+
+        [JsonProperty("isOrganizer")]
+        public bool IsOrganizer { get; set; }
     }
 
     public static partial class ViewModelExtensions
@@ -28,7 +31,8 @@ namespace LiveHack.Models.ViewModels
             {
                 Id = user.Id,
                 DisplayName = user.DisplayName,
-                TeamInfo = team == null ? null : new { id = team.Id, name = team.Name }
+                TeamInfo = team == null ? null : new { id = team.Id, name = team.Name },
+                IsOrganizer = user.IsOrganizer
             };
         }
     }

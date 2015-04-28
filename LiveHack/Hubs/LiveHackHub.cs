@@ -31,6 +31,12 @@ namespace LiveHack.Hubs
             }
         }
 
+        public static void SendNewAnnouncement(Announcement ann)
+        {
+            var hub = GlobalHost.ConnectionManager.GetHubContext<LiveHackHub>();
+            hub.Clients.All.newAnnouncement(ann.ToViewModel());
+        }
+
         public static void SendNewChatOwner(Chat chat, User user)
         {
             var hub = GlobalHost.ConnectionManager.GetHubContext<LiveHackHub>();

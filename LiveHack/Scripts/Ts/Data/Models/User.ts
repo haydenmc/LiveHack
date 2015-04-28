@@ -1,5 +1,6 @@
 ﻿class User {
     public id: string;
     public displayName: string;
-    public teamInfo: { id: string; name: string; }
+    public teamInfo: { id: string; name: string; };
+    public isOrganizer: boolean;
 }

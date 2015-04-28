@@ -24,6 +24,9 @@ class LiveHackHub {
                 chatId: chatId, user: user
             });
         };
+        this.hub.client.newAnnouncement = (ann: Announcement) => {
+            this.dataSource.fire(DataEvent.NewAnnouncement, ann);
+        };
     }
 
     public connect(): void {

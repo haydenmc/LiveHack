@@ -144,6 +144,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\Js\es6-promise-2.0.1.js" />
+    <Content Include="Scripts\Js\moment.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +237,7 @@
     <TypeScriptCompile Include="Scripts\Ts\UiElements\WorkingIndicatorElement.ts" />
     <TypeScriptCompile Include="Scripts\Typings\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\Typings\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\signalr.d.ts" />
   </ItemGroup>
   <PropertyGroup>

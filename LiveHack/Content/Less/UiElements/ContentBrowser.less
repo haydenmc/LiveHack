@@ -36,10 +36,16 @@ div.contentBrowser {
                 font-size: 22px;
                 padding: 4px 0 4px 16px;
                 margin: 4px 0;
+                color: fade(@color-fg, 60%);
+
+                &:hover {
+                    color: fade(@color-fg, 85%);
+                }
 
                 &.selected {
                     border-left: 6px solid @color-accent;
                     padding-left: 10px;
+                    color: fade(@color-fg, 100%);
                 }
             }
         }
