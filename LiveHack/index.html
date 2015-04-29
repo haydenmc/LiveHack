@@ -109,8 +109,27 @@
 
     <!-- Announcements -->
     <script type="text/template" id="template_Announcements">
-        <ul class="announcements">
-        </ul>
+        <div class="announcementsContainer">
+            <a class="button addButton">Add Announcement</a>
+            <ul class="announcements"></ul>
+        </div>
+    </script>
+
+    <!-- Create announcement dialog -->
+    <script type="text/template" id="template_CreateAnnouncement">
+        <div class="centerContainer darken">
+            <div class="dialog">
+                <h1>Create Announcement</h1>
+                <form>
+                    <input type="text" name="title" placeholder="title" />
+                    <textarea name="body" placeholder="announcement body"></textarea>
+                </form>
+                <div class="buttons">
+                    <a href="#" class="button cancel">Cancel</a>
+                    <a href="#" class="button active post">Post</a>
+                </div>
+            </div>
+        </div>
     </script>
 
     <!-- Create team dialog -->
@@ -158,6 +177,7 @@
     <script src="Scripts/jquery-1.6.4.min.js"></script>
     <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="Scripts/Js/moment.js"></script>
+    <script src="Scripts/Js/markdown.min.js"></script>
 
     <!-- SignalR Hubs -->
     <script src="signalr/hubs"></script>

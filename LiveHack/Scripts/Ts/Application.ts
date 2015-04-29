@@ -24,9 +24,11 @@
 /// <reference path="UiElements/RegisterElement.ts" />
 /// <reference path="UiElements/WorkingIndicatorElement.ts" />
 /// <reference path="UiElements/AnnouncementsElement.ts" />
+/// <reference path="UiElements/CreateAnnouncementElement.ts" />
 
 /* Misc */
 /// <reference path="Misc/ColorHasher.ts" />
+/// <reference path="Misc/Sanitizer.ts" />
 
 class Application {
     public static instance: Application;
@@ -50,16 +52,18 @@ class Application {
     }
 
     public loggedIn(): void {
-        this.dataSource.liveHackHub.connect();
-        this.teamPane = new TeamPaneElement();
-        this.teamPane.show();
-        this.contentBrowser = new ContentBrowserElement();
-        this.contentBrowser.show();
-
         // Fetch user info
         this.workingIndicator.pushWorkItem();
         this.dataSource.getUser().then((user) => {
             this.dataSource.user = user;
+
+            // init the UI now that we have a user
+            this.dataSource.liveHackHub.connect();
+            this.teamPane = new TeamPaneElement();
+            this.teamPane.show();
+            this.contentBrowser = new ContentBrowserElement();
+            this.contentBrowser.show();
+
             if (user.teamInfo != null) {
                 this.workingIndicator.pushWorkItem();
                 this.dataSource.getTeam().then((team) => {

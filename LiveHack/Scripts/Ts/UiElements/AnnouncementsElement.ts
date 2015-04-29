@@ -14,7 +14,7 @@ class AnnouncementsElement extends UiElement {
     };
 
     public get elementAnnouncementsList(): HTMLUListElement {
-        return <HTMLUListElement>this.htmlElement;
+        return <HTMLUListElement>this.htmlElement.querySelector("ul.announcements");
     }
 
     constructor(parentElement: HTMLElement) {
@@ -23,6 +23,14 @@ class AnnouncementsElement extends UiElement {
         this.announcements = new ObservableArray<Announcement>();
         this.announcements.itemAdded.subscribe(this.callback_addNewAnnouncement);
         this.fetchAnnouncements();
+
+        this.htmlElement.querySelector("a.button.addButton").addEventListener("click",() => {
+            new CreateAnnouncementElement().show();
+        });
+
+        if (!Application.instance.dataSource.user.isOrganizer) {
+            (<HTMLElement>this.htmlElement.querySelector("a.button.addButton")).style.display = "none";
+        }
 
         Application.instance.dataSource.subscribe(DataEvent.NewAnnouncement, this.callback_receivedNewAnnouncement);
     }

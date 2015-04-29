@@ -128,6 +128,10 @@ class DataSource implements INotifyPropertyChanged {
         return JsonRequest.httpGet<Array<Announcement>>('/api/Announcement', this._authInfo.access_token);
     }
 
+    public createAnnouncement(title: string, body: string): Promise<Announcement> {
+        return JsonRequest.httpPost<Announcement>('/api/Announcement', { title: title, body: body }, this._authInfo.access_token);
+    }
+
     public subscribe(eventName: DataEvent, callback: (arg: any) => void) {
         if (this.callbacks[eventName] == null) {
             this.callbacks[eventName] = new EventHandler<any>();

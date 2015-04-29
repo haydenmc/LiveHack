@@ -144,6 +144,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\Js\es6-promise-2.0.1.js" />
+    <Content Include="Scripts\Js\markdown.min.js" />
     <Content Include="Scripts\Js\moment.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -234,6 +235,8 @@
     <TypeScriptCompile Include="Scripts\Ts\Misc\INotifyPropertyChanged.ts" />
     <Content Include="Scripts\Ts\UiElements\JoinTeamElement.ts" />
     <None Include="Scripts\Ts\UiElements\AnnouncementsElement.ts" />
+    <None Include="Scripts\Ts\UiElements\CreateAnnouncementElement.ts" />
+    <TypeScriptCompile Include="Scripts\Ts\Misc\Sanitizer.ts" />
     <TypeScriptCompile Include="Scripts\Ts\UiElements\WorkingIndicatorElement.ts" />
     <TypeScriptCompile Include="Scripts\Typings\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\jquery.d.ts" />

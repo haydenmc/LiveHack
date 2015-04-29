@@ -1,5 +1,7 @@
-﻿/// <reference path="../Application.ts" />
+﻿/// <reference path="../Misc/Sanitizer.ts" />
+/// <reference path="../Application.ts" />
 /// <reference path="../UiElement.ts" />
+
 class ChatElement extends UiElement {
     public chatId: string;
 
@@ -50,7 +52,7 @@ class ChatElement extends UiElement {
         }
         var messageNode = document.createElement("li");
         messageNode.style.borderLeftColor = ColorHasher.guidToColor(message.sender.id);
-        messageNode.innerHTML = '<div class="body">' + message.body + '</div><div class="sender">' + message.sender.displayName + '</div>';
+        messageNode.innerHTML = '<div class="body">' + Sanitizer.htmlEscape(message.body) + '</div><div class="sender">' + Sanitizer.htmlEscape(message.sender.displayName) + '</div>';
         messageList.appendChild(messageNode);
         if (scrollToBottom) {
             messageList.scrollTop = messageList.scrollHeight - messageList.clientHeight;
