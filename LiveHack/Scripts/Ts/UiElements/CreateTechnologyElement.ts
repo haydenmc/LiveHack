@@ -36,6 +36,21 @@ class CreateTechnologyElement extends UiElement {
         this.htmlElement.querySelector("a.button.create").addEventListener("click",(ev) => {
             this.submit();
         });
+
+        var inputElements = this.htmlElement.querySelectorAll("input");
+        for (var i = 0; i < inputElements.length; i++) {
+            inputElements.item(i).addEventListener('keypress',(e: KeyboardEvent) => {
+                var key = e.which || e.keyCode;
+                if (key === 13) { // 13 is enter
+                    this.submit();
+                }
+            });
+        }
+
+        this.htmlElement.querySelector("form").addEventListener("submit",(ev) => {
+            ev.preventDefault();
+            this.submit();
+        });
     }
 
     public submit(): void {
