@@ -51,10 +51,11 @@ namespace LiveHack.Controllers
                 {
                     return NotFound();
                 }
-                if (!chat.Owners.Contains(user) && !chat.Users.Contains(user))
-                {
-                    return Unauthorized();
-                }
+                //HACK: Since technology chats need to be global, we don't check if they're an owner...
+                //if (!chat.Owners.Contains(user) && !chat.Users.Contains(user))
+                //{
+                //    return Unauthorized();
+                //}
                 var messages = db.Messages.Include("Sender.ChatsOwned").Where(m => m.Chat.Id == chatId).OrderByDescending(m => m.SentDateTime).Take(50).ToList();
                 messages.Reverse();
                 var results = messages.Select(m => m.ToViewModel());
