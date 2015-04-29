@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LiveHackDb.Models
 {
-    class Technology : Chat
+    public class Technology : Chat
     {
     }
 }

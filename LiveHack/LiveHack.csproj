@@ -158,11 +158,13 @@
     <Compile Include="Controllers\ApiControllerWithHub.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\TechnologyController.cs" />
     <Compile Include="Hubs\LiveHackHub.cs" />
     <Compile Include="Models\BindingModels\AnnouncementBindingModel.cs" />
     <Compile Include="Models\BindingModels\MessageBindingModel.cs" />
     <Compile Include="Models\BindingModels\RegisterBindingModel.cs" />
     <Compile Include="Models\BindingModels\TeamBindingModel.cs" />
+    <Compile Include="Models\BindingModels\TechnologyBindingModel.cs" />
     <Compile Include="Models\ViewModels\AnnouncementViewModel.cs" />
     <Compile Include="Models\ViewModels\ChatViewModel.cs" />
     <Compile Include="Models\ViewModels\MessageViewModel.cs" />
@@ -232,11 +234,13 @@
     <None Include="Scripts\Ts\Misc\ColorHasher.ts" />
     <None Include="Scripts\Ts\Data\ObservableArray.ts" />
     <None Include="Scripts\Ts\Data\Models\Announcement.ts" />
+    <Content Include="Scripts\Ts\Data\Models\Technology.ts" />
     <TypeScriptCompile Include="Scripts\Ts\Misc\INotifyPropertyChanged.ts" />
     <Content Include="Scripts\Ts\UiElements\JoinTeamElement.ts" />
     <None Include="Scripts\Ts\UiElements\AnnouncementsElement.ts" />
     <None Include="Scripts\Ts\UiElements\CreateAnnouncementElement.ts" />
     <TypeScriptCompile Include="Scripts\Ts\Misc\Sanitizer.ts" />
+    <None Include="Scripts\Ts\UiElements\CreateTechnologyElement.ts" />
     <TypeScriptCompile Include="Scripts\Ts\UiElements\WorkingIndicatorElement.ts" />
     <TypeScriptCompile Include="Scripts\Typings\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\jquery.d.ts" />

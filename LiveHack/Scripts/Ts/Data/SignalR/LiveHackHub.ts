@@ -27,6 +27,9 @@ class LiveHackHub {
         this.hub.client.newAnnouncement = (ann: Announcement) => {
             this.dataSource.fire(DataEvent.NewAnnouncement, ann);
         };
+        this.hub.client.newTechnology = (tech: Technology) => {
+            this.dataSource.fire(DataEvent.NewTechnology, tech);
+        }
     }
 
     public connect(): void {

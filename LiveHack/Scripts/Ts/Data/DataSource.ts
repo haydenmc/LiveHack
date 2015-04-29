@@ -1,4 +1,5 @@
-﻿/// <reference path="Models/Announcement.ts" />
+﻿/// <reference path="models/technology.ts" />
+/// <reference path="Models/Announcement.ts" />
 /// <reference path="Models/Team.ts" />
 /// <reference path="Models/AuthResponse.ts" />
 /// <reference path="SignalR/LiveHackHub.ts" />
@@ -10,7 +11,8 @@
 enum DataEvent {
     NewMessage = 100,
     NewChatOwner = 200,
-    NewAnnouncement = 300
+    NewAnnouncement = 300,
+    NewTechnology = 400
 };
 
 class DataSource implements INotifyPropertyChanged {
@@ -130,6 +132,14 @@ class DataSource implements INotifyPropertyChanged {
 
     public createAnnouncement(title: string, body: string): Promise<Announcement> {
         return JsonRequest.httpPost<Announcement>('/api/Announcement', { title: title, body: body }, this._authInfo.access_token);
+    }
+
+    public getTechnologies(): Promise<Array<Technology>> {
+        return JsonRequest.httpGet<Array<Technology>>('/api/Technology', this._authInfo.access_token);
+    }
+
+    public createTechnology(name: string): Promise<Technology> {
+        return JsonRequest.httpPost<Technology>('/api/Technology', { name: name }, this._authInfo.access_token);
     }
 
     public subscribe(eventName: DataEvent, callback: (arg: any) => void) {

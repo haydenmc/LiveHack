@@ -31,10 +31,25 @@ namespace LiveHack.Hubs
             }
         }
 
+        public static void AddAllToGroup(string group)
+        {
+            var hub = GlobalHost.ConnectionManager.GetHubContext<LiveHackHub>();
+            foreach (var connectionId in UserConnectionIds.Values.SelectMany(l => l))
+            {
+                hub.Groups.Add(connectionId, group);
+            }
+        }
+
         public static void SendNewAnnouncement(Announcement ann)
         {
             var hub = GlobalHost.ConnectionManager.GetHubContext<LiveHackHub>();
             hub.Clients.All.newAnnouncement(ann.ToViewModel());
+        }
+
+        public static void SendNewTechnology(Technology tech)
+        {
+            var hub = GlobalHost.ConnectionManager.GetHubContext<LiveHackHub>();
+            hub.Clients.All.newTechnology(tech.ToViewModel());
         }
 
         public static void SendNewChatOwner(Chat chat, User user)
@@ -60,6 +75,13 @@ namespace LiveHack.Hubs
             {
                 Groups.Add(Context.ConnectionId, chat.Id.ToString());
             }
+
+            // HACK: Everyone is in every tech chat.
+            foreach (var tech in Db.Chats.OfType<Technology>())
+            {
+                Groups.Add(Context.ConnectionId, tech.Id.ToString());
+            }
+
             return base.OnConnected();
         }
 
